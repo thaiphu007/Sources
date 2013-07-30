@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="RootMaster.master.cs" Inherits="master_RootMaster" %>
+<%@ Register src="../usercontrols/ucMenu.ascx" tagname="ucMenu" tagprefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Điểm Son Việt</title>
+    <link rel="shortcut icon" type="image/x-icon" href='http://diemsonviet.com/images/favicon.ico' />   
+</head>
+<body>
+<form id="form1" runat="server">
+<script src="<%= Contants.SITE_NAME %>scripts/jquery-latest.js" type="text/javascript"></script> 
+<asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>  
+
+   <div style="display: block; top:40px;position:absolute;left:15px;overflow:hidden">        
+        <div style="padding-bottom:20px">
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="160px" height="300px" 
+            codebase="http://active.macromedia.com/flash5/cabs/swflash.cab#version=5,0,0,0">
+                <param name="movie" value="http://diemsonviet.com/images/thiet_ke_gia_cong_LED.swf" />
+                <param name="play" value="true" />
+                <param name="quatity" value="best" />
+                <param name="loop" value="true" />
+                <embed src="http://diemsonviet.com/images/thiet_ke_gia_cong_LED.swf" width="160px" height="300px" play="true" loop="true" quatity="best" 
+                pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"> 
+                </embed>
+            </object>
+            </div>
+            <div>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="160px" height="300px" 
+            codebase="http://active.macromedia.com/flash5/cabs/swflash.cab#version=5,0,0,0">
+                <param name="movie" value="http://diemsonviet.com/images/thiet_ke_thuong_hieu.swf" />
+                <param name="play" value="true" />
+                <param name="quatity" value="best" />
+                <param name="loop" value="true" />
+                <embed src="http://diemsonviet.com/images/thiet_ke_thuong_hieu.swf" width="160px" height="300px" play="true" loop="true" quatity="best" 
+                pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"> 
+                </embed>
+            </object>
+        </div>
+    </div>
+    <div style="display: block; top:40px;position:absolute;right:15px;overflow:hidden">        
+        <div style="padding-bottom:20px">
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="160px" height="300px" 
+            codebase="http://active.macromedia.com/flash5/cabs/swflash.cab#version=5,0,0,0">
+                <param name="movie" value="http://diemsonviet.com/images/thiet_ke_lich_tet.swf" />
+                <param name="play" value="true" />
+                <param name="quatity" value="best" />
+                <param name="loop" value="true" />
+                <embed src="http://diemsonviet.com/images/thiet_ke_lich_tet.swf" width="160px" height="300px" play="true" loop="true" quatity="best" 
+                pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"> 
+                </embed>
+            </object>
+            </div>
+            <div>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="160px" height="300px" 
+            codebase="http://active.macromedia.com/flash5/cabs/swflash.cab#version=5,0,0,0">
+                <param name="movie" value="http://diemsonviet.com/images/thiet_ke_tao_dang.swf" />
+                <param name="play" value="true" />
+                <param name="quatity" value="best" />
+                <param name="loop" value="true" />
+                <embed src="http://diemsonviet.com/images/thiet_ke_tao_dang.swf" width="160px" height="300px" play="true" loop="true" quatity="best" 
+                pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"> 
+                </embed>
+            </object>
+        </div>
+    </div>
+  <div class="shadow-top"></div>
+  <div id="main" style="overflow:hidden;">
+    <div id="colleft">  
+        <div id="ltop">
+            <div id="logo">
+                <img src="<%=Contants.SITE_NAME %>images/logo.png" alt="" />
+            </div>
+        </div>
+        <div id="lbottom">
+            <div id="menu">
+                <uc1:ucMenu ID="ucMenu1" runat="server" />
+            </div>
+            <div id="hotline">
+                <div class="icon">
+                    <img src="<%=Contants.SITE_NAME %>images/hotline.png" alt="" />
+                </div>
+                <div class="phone">
+                    <table cellspacing="0" border="0">
+                         <tr>
+                            <td class="pname">
+                            Mr. Minh:
+                            </td>
+                            <td class="pnumber">
+                            0909.15.64.11<br />0917.60.46.46
+                            </td>
+                        </tr>   
+                         <tr>
+                            <td class="pname">
+                            Mr. Hiền:
+                            </td>
+                            <td class="pnumber">
+                            0988.75.94.93
+                            </td>
+                        </tr>                      
+                         <tr>
+                            <td class="pname">
+                            Mr. Thông:
+                            </td>
+                            <td class="pnumber">
+                            0122.7338.707
+                            </td>
+                        </tr>
+                        <tr align="center"><td align="center" class="pname" colspan="2">+84.08.625.625.53</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="copy">&copy; 2012 DiemSonViet Copy Right.</div>
+        </div>
+    </div>   
+    <div id="colright">
+        <asp:ContentPlaceHolder id="cpl1" runat="server"></asp:ContentPlaceHolder>
+    </div>
+  </div>
+  <div style="position:relative;z-index:100;">
+    <div class="shadow-bottom"></div>
+  </div>  
+</form>
+</body>
+</html>

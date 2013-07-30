@@ -1,0 +1,142 @@
+﻿body {
+	background:#eeeeef;
+	color:#000;
+	font-size:12px;
+	line-height:17px;
+	font-family: 'Arial';	
+}
+.clr {
+	clear:both;
+}
+.clrSolo {
+	clear: both; 
+ 	font-size: 0px; 
+ 	line-height: 0px; 
+ 	margin: 0px; 
+ 	padding: 0px; 
+ 	visibility: hidden;
+	height: 0;
+}
+#main
+{    
+    width:1024px;    
+    clear:both;
+    margin:0 auto;
+}
+#header
+{
+    height:40px;
+    border:1px solid #fff;
+    clear:both;
+    padding:20px 10px 0 0;
+    text-align:right;
+    font-size:20px;
+    font-style:italic;
+    color:Gray;
+}
+#menu
+{
+    height:25px;
+    border:1px solid #fff;
+    clear:both;
+}
+#menuitem
+{
+    width:1000px;
+    margin:0 auto;    
+    height:20px;
+    margin-top:5px;
+}
+#menuitem ul
+{
+    margin:0;
+    padding:0;
+}
+#menuitem ul li
+{
+    float:left;
+    list-style-type:none;
+    padding:0 10px 0 10px;
+    border-right:1px solid black;
+}
+#menuitem ul li a:link,
+#menuitem ul li  a:visited,
+#menuitem ul li  a:active {
+	color:blue;
+	text-decoration:none;
+}
+#menuitem ul li a:hover {
+	text-decoration:underline;
+	color:red;
+}
+
+#contents
+{ 
+    clear:both;
+    padding:10px;
+    border:1px solid #fff;
+}
+#list
+{
+    width:90%;
+    border:0
+}
+#list th
+{
+    background-color:Gray;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}
+.textcenter
+{
+    text-align:center;
+}
+.item td
+{
+    background-color:White;
+    color:Black;
+}
+.alter td
+{
+    background-color:#ABABAB;
+    color:White;
+}
+#Add
+{
+    width:80%;
+    border:0;
+}
+#Add td input[type=text]
+{
+    width:300px;
+}
+#Add td textarea
+{
+    width:600px;
+    
+}
+#Add td select
+{
+    width:304px;
+}
+#footer
+{
+    height:20px;
+    border:1px solid #fff;
+    clear:both;
+    padding:5px 10px 0 0;
+    text-align:right;
+    font-size:14px;    
+    color:Gray;
+    
+}
+.redmark
+{
+    color:Red;
+}
+.status
+{
+    font-size:large;
+    color:#77431D;
+}

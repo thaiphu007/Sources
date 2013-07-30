@@ -1,0 +1,47 @@
+
+.jimgMenu {
+	position:relative;
+	margin:0 auto;
+	padding: 0px;
+	width:730px;
+	height:208px;
+	text-align:center;
+	overflow: hidden;
+	background:black;
+	color:White;
+	font-family:Times New Roman;
+	font-weight:bold;
+	padding-top:10px;
+}
+
+.jimgMenu ul {
+	list-style: none;
+	width: 690px!important;
+	margin: 0 auto;	
+	padding: 0px;
+	display: block;
+	height: 200px;
+	position: relative;
+	}
+	
+.jimgMenu ul li {
+	width: 30px;
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+.jimgMenu ul li a {
+	text-indent: -1000px;
+	background:#fff repeat scroll 0%;
+	cursor:pointer;
+	display:block;
+	overflow: hidden;
+	height: 200px;	
+	background-position: center;
+}
+
+
+.clear {
+	clear: both;
+}
