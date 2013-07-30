@@ -1,0 +1,47 @@
+Softek Barcode Reader Toolkit for the iPhone
+
+Version 7.3.1j September 2010
+
+1. Added support for rotating views to the Bardecode class. Please note the following if you wish to support rotating views in your app:
+
+Override the didRotateFromInterfaceOrientation method in your view controller and call the ResizePreview method of the Bardecode class. e.g:
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	[barcode ResizePreview];
+}
+
+2. If an image called video_preview_bg.png exists in your projects resources then it will be used as a background image for the video preview. The image used in the iBardecode sample project is 320X480 pixels solid black.
+
+3. If an image called video_preview_ov.png exists in your project resources then it will be used as an overlay for the video preview.
+
+Version 7.3.1i September 2010
+
+Worked around a bug in the AVCaptureVideoPreviewLayer class in IOS 4.1. The bug made the preview layer freeze at the point of initialisation if the output device had already been added to the capture session.
+
+Added a property called WaitForFocus which defaults to false. 
+
+Version 7.3.1h September 2010
+
+Bardecode class for IOS 4:
+
+Fixed short delay in sample project when barcode is detected (thanks to Oli Kessler of NCode for the idea).
+
+Prevented class from sampling frames while auto-focus is taking place. The text on the cancel button changes to blue when the class is sampling frames and reverts to black when auto-focus is in operation.
+
+Ensured that BarcodeDidRead can only be fired once for any single video capture session.
+
+Reduced the size of the quiet zone to cope with tight borders around barcodes.
+
+Increased the required hit-counts for barcodes to reduce chances of false positive reads.
+
+Added a new property called viewForPreview which can be used to specify the UIView that the Bardecode class should use for overlaying the video preview and the cancel buttons. For example, the sample project has the following code:
+
+barcode = [Bardecode alloc] ;
+[barcode init] ;
+barcode.Delegate = self ;
+[barcode setViewForPreview:self.view] ;
+[super viewDidLoad];
+
+This may be useful if the delegate class is not a view controller.
+
+
