@@ -1,0 +1,11 @@
+﻿User-agent: *
+Disallow: /administrator
+Disallow: /App_Code
+Disallow: /App_Data
+Disallow: /App_GlobalResources
+Disallow: /Bin
+Disallow: /editors
+Disallow: /EmailTemplate
+Disallow: /Scripts
+Disallow: /uploads
+Disallow: /usercontrols

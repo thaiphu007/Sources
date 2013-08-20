@@ -1,0 +1,213 @@
+﻿body {		
+	font-size:12px;
+	line-height:17px;
+	font-family: 'Arial';
+	background:#fff url(images/backg_main.png);		
+}
+#main
+{
+    width:980px;
+    margin:0 auto;
+}
+#colleft
+{
+    float:left;
+    width:240px;
+    position: relative; 
+   
+}
+#lbottom
+{
+    background:url(images/backgf_td.png) repeat-y ;    
+    position: relative;
+    width:100%;
+    height:590px;
+}
+#menu
+{
+    padding-top:15px;
+}
+@font-face {
+	font-family: walbaumi;
+	src: url('images/14_3853_walbaumi.ttf') ;
+}
+@font-face {
+	font-family: walbaumb;
+	src: url('images/14_3851_walbaumb.ttf') ;
+}
+#menu ul li 
+{
+    height:27px;
+    padding-top:11px;
+    padding-right:45px;
+    text-align:right;
+    font-size:15pt;
+    font-weight:bold;
+    font-family:walbaumb;
+    background:url(images/anchor_nf.png) no-repeat;
+    background-position:216px 12px;
+    border-bottom:2px solid #7D7B7C;
+    color:#c6c5c6;
+    position:relative;
+    display:block;
+    
+}
+ul.item li a
+{
+    color:#c6c5c6;
+    text-decoration:none;
+}
+#menu ul li:hover
+{  
+    background:url(images/backgf_tdf.png) no-repeat; 
+    font-style:italic;     
+}
+ul.item li:hover a
+{     
+    color:Yellow;
+}
+ul.item li:hover ul.subitem a
+{
+    color:#c6c5c6;
+}
+ul.item li:hover ul.subitem li:hover a
+{
+    color:yellow;
+}
+#menu ul li:active
+{  
+    background:url(images/backgf_tdf.png) no-repeat; 
+    color:Yellow;  
+    font-style:italic;     
+}
+#menu ul li div ul li 
+{
+    height:27px;
+}
+ul.subitem a
+{
+    color:#c6c5c6;
+    text-decoration:none;
+}
+#menu ul li div
+{
+    display:none;
+    width:240px;
+    background-color:#1D1D1B;
+    opacity:0.8;
+}
+#menu ul li:hover div
+{  
+    display:block; 
+    position:absolute;
+    z-index:9999;  
+    top:0px;
+    right:-240px;
+}
+
+.shadow-top{background-color:#848484;position:absolute;height:10px;z-index:1000;opacity:0.5;width:100%}
+.shadow-bottom{background-color:#848484;position:absolute;height:10px;z-index:1000;opacity:0.5;width:100%; bottom:0px}
+
+
+#hotline
+{
+    padding-top:20px;
+}
+
+#hotline .icon
+{
+    width:102px;
+    margin:0 auto;
+}
+#hotline .phone
+{
+    padding-top:16px;
+    width:190px;
+    margin:0 auto;
+}
+#hotline .phone
+{
+    font-size:16px;    
+    font-family:walbaumb;  
+    font-weight:bold;  
+}
+#hotline .phone td
+{
+    padding-bottom:5px;
+}
+.pname
+{
+    color:#c6c5c6;
+}
+.pnumber
+{
+    padding-left:3px;
+    color:#DACA29;
+    font-style:italic;
+}
+#colright
+{
+    width:740px;
+    background:#fff;
+    float:left;	
+    min-height:768px;   
+    
+}
+.content-head
+{
+    width:730px;    
+    margin:0 auto;
+    z-index:1001;
+    position:relative;
+    background-color:Black;
+    padding:20px 0px;
+}
+#rtop
+{
+  
+     width:692px;
+     margin:0 auto;
+     min-height:410px;     
+          
+}
+#rmiddle
+{
+     margin:0 auto;
+     width:730px;
+     height:210px;     
+}
+#slides
+{   
+    height:190px;
+}
+#rbottom
+{
+    padding-top:5px;
+}
+
+#maincontent
+{  
+    max-height:748px;
+    overflow-y:auto; 
+    margin:10px 0px;
+}
+.content
+{    
+    width:620px;
+    margin:0 auto;
+    padding:5px 0px;
+}
+ /* Height & width for the container - The rest is done by the jQuery part. */
+  div[rel='scrollcontent'] { width: 100%;}
+  
+  .scrollcontent-content { position:relative!important } 
+  .scrollcontent-bar { width: 11px; background: white; border-radius: 4px; box-shadow: inset 0px 0px 15px black; overflow: hidden; }
+  .scrollcontent-drag { background: white; height:300px!important; border-radius: 4px; box-shadow: inset 0px 0px 5px black; cursor: pointer; }  
+  
+  .copy
+  {
+      position:absolute; 
+      bottom:10px;
+      padding-left:10px;
+      color:White;
+  }  

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="diemsonvietdb" Class="DiemSonVietDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=diemsonvietdb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="diemsonvietdbConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.WebLinks" Member="WebLinks">
+    <Type Name="WebLink">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LinkName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Links" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConfigWeb" Member="ConfigWebs">
+    <Type Name="ConfigWeb">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Settingkey" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SettingValue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CateName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Category_Category" Member="Categories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
+      <Association Name="Category_ContentPage" Member="ContentPages" ThisKey="Id" OtherKey="CateId" Type="ContentPage" />
+      <Association Name="Category_Category" Member="Category1" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentPages" Member="ContentPages">
+    <Type Name="ContentPage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContentName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Contents" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ContentTitle" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsHomePage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ShortContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkInContent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MetaTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MetaKeywords" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MetaDescriptions" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Category_ContentPage" Member="Category" ThisKey="CateId" OtherKey="Id" Type="Category" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Categories" Member="tbl_Categories">
+    <Type Name="tbl_Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CateName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbl_Category_tbl_Category" Member="tbl_Categories" ThisKey="Id" OtherKey="ParentId" Type="tbl_Category" />
+      <Association Name="tbl_Category_tbl_ContentPage" Member="tbl_ContentPages" ThisKey="Id" OtherKey="CateId" Type="tbl_ContentPage" />
+      <Association Name="tbl_Category_tbl_Category" Member="tbl_Category1" ThisKey="ParentId" OtherKey="Id" Type="tbl_Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_ContentPages" Member="tbl_ContentPages">
+    <Type Name="tbl_ContentPage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContentName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Contents" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ContentTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="IsHomePage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ShortContent" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LinkInContent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MetaTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MetaKeywords" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MetaDescriptions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbl_Category_tbl_ContentPage" Member="tbl_Category" ThisKey="CateId" OtherKey="Id" Type="tbl_Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
