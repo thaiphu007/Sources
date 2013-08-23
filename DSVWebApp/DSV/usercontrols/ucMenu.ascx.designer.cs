@@ -19,4 +19,13 @@ public partial class usercontrols_ucMenu {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Repeater rptMenu;
+    
+    /// <summary>
+    /// SubNews1 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::DSV.usercontrols.ucSubNews SubNews1;
 }

@@ -1,49 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.375, 9.625" name="DiemSonVietDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.375, 9.25" name="DiemSonVietDB">
   <DataContextMoniker Name="/DiemSonVietDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="e664466c-e9a2-4260-993d-87a940e3770d" absoluteBounds="0.75, 4.75, 2, 1.5785953776041666">
+    <classShape Id="e664466c-e9a2-4260-993d-87a940e3770d" absoluteBounds="0.75, 4.75, 2, 1.4248478190104166">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/WebLink" />
       <nestedChildShapes>
-        <elementListCompartment Id="4a52ab2e-4235-40f2-b6f5-dcb38c9bcf7f" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4a52ab2e-4235-40f2-b6f5-dcb38c9bcf7f" absoluteBounds="0.765, 5.21, 1.9700000000000002, 0.86484781901041663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d4c4d2d5-5061-493a-84e7-911f7dbaab12" absoluteBounds="3.75, 4.75, 2, 1.3862939453125005">
+    <classShape Id="d4c4d2d5-5061-493a-84e7-911f7dbaab12" absoluteBounds="3.75, 4.75, 2, 1.2605004882812496">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/ConfigWeb" />
       <nestedChildShapes>
-        <elementListCompartment Id="7035f445-1cdf-4847-9792-c54f104d2c4e" absoluteBounds="3.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7035f445-1cdf-4847-9792-c54f104d2c4e" absoluteBounds="3.765, 5.21, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="12e072fe-9de9-437d-86ca-4920148e2ebb" absoluteBounds="0.625, 1.5, 2, 1.7708968098958331">
+    <classShape Id="12e072fe-9de9-437d-86ca-4920148e2ebb" absoluteBounds="0.625, 1.5, 2, 1.5891951497395831">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/Category" />
       <nestedChildShapes>
-        <elementListCompartment Id="f771ad9b-ba04-48f3-b44f-aa7b035c9bfa" absoluteBounds="0.64000000000000012, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f771ad9b-ba04-48f3-b44f-aa7b035c9bfa" absoluteBounds="0.64000000000000012, 1.96, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.33052987154447 : 3.27089680989583); (1.33052987154447 : 3.52089680989583); (1.93349251552484 : 3.52089680989583); (1.93349251552484 : 3.27089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.32759469088041 : 3.08919514973958); (1.32759469088041 : 3.33919514973958); (1.93656746669671 : 3.33919514973958); (1.93656746669671 : 3.08919514973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DiemSonVietDBDataContext/Category/Category_Category" />
       <nodes>
         <classShapeMoniker Id="12e072fe-9de9-437d-86ca-4920148e2ebb" />
         <classShapeMoniker Id="12e072fe-9de9-437d-86ca-4920148e2ebb" />
       </nodes>
     </associationConnector>
-    <classShape Id="c9642239-9319-4228-90ab-83c0fe904195" absoluteBounds="4.125, 0.875, 2, 3.3093082682291666">
+    <classShape Id="c9642239-9319-4228-90ab-83c0fe904195" absoluteBounds="4.125, 0.875, 2, 2.9039737955729166">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/ContentPage" />
       <nestedChildShapes>
-        <elementListCompartment Id="1ec33e67-78ee-4d34-8620-c84a02ea79c9" absoluteBounds="4.1400000000000006, 1.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1ec33e67-78ee-4d34-8620-c84a02ea79c9" absoluteBounds="4.1400000000000006, 1.335, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.625 : 2.38544840494792); (4.125 : 2.38544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.625 : 2.29459757486979); (4.125 : 2.29459757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DiemSonVietDBDataContext/Category/Category_ContentPage" />
       <nodes>
         <classShapeMoniker Id="12e072fe-9de9-437d-86ca-4920148e2ebb" />
         <classShapeMoniker Id="c9642239-9319-4228-90ab-83c0fe904195" />
       </nodes>
     </associationConnector>
-    <classShape Id="09cfe6ed-e445-43e3-8e4f-a2d648a502de" absoluteBounds="6.375, 6.75, 2, 1.7708968098958335">
+    <classShape Id="09cfe6ed-e445-43e3-8e4f-a2d648a502de" absoluteBounds="6.375, 6.75, 2, 1.5891951497395827">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/tbl_Category" />
       <nestedChildShapes>
-        <elementListCompartment Id="dbc1ad9c-2517-4eb4-b8fa-fa2004087718" absoluteBounds="6.39, 7.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="dbc1ad9c-2517-4eb4-b8fa-fa2004087718" absoluteBounds="6.39, 7.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(7.08052987154447 : 8.52089680989583); (7.08052987154447 : 8.77089680989583); (7.68349251552484 : 8.77089680989583); (7.68349251552484 : 8.52089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -53,10 +53,10 @@
         <classShapeMoniker Id="09cfe6ed-e445-43e3-8e4f-a2d648a502de" />
       </nodes>
     </associationConnector>
-    <classShape Id="95f42bf8-1c1b-4c8b-b70c-d67680d2cbb6" absoluteBounds="10.125, 6.125, 2, 3.3093082682291666">
+    <classShape Id="95f42bf8-1c1b-4c8b-b70c-d67680d2cbb6" absoluteBounds="10.125, 6.125, 2, 2.9039737955729166">
       <DataClassMoniker Name="/DiemSonVietDBDataContext/tbl_ContentPage" />
       <nestedChildShapes>
-        <elementListCompartment Id="91866afd-e691-4854-93f2-32409ebfffb1" absoluteBounds="10.14, 6.585, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="91866afd-e691-4854-93f2-32409ebfffb1" absoluteBounds="10.14, 6.585, 1.9700000000000002, 2.3439737955729165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(8.375 : 7.63544840494792); (10.125 : 7.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -64,6 +64,25 @@
       <nodes>
         <classShapeMoniker Id="09cfe6ed-e445-43e3-8e4f-a2d648a502de" />
         <classShapeMoniker Id="95f42bf8-1c1b-4c8b-b70c-d67680d2cbb6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f1c5f5ed-bc3f-43d4-b96a-41443cba773d" absoluteBounds="7.375, 1.625, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/DiemSonVietDBDataContext/Category_New" />
+      <nestedChildShapes>
+        <elementListCompartment Id="715bfe63-a09f-49c3-b63c-0502876151cc" absoluteBounds="7.39, 2.085, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="719dd841-ced5-4986-9c40-20297e023fd7" absoluteBounds="9.75, 1.25, 2, 3.23266845703125">
+      <DataClassMoniker Name="/DiemSonVietDBDataContext/New" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b66139da-bd1c-4fd0-9f3c-654b1ea63398" absoluteBounds="9.765, 1.71, 1.9700000000000002, 2.67266845703125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.375 : 2.33742390950521); (9.75 : 2.33742390950521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DiemSonVietDBDataContext/Category_New/Category_New_New" />
+      <nodes>
+        <classShapeMoniker Id="f1c5f5ed-bc3f-43d4-b96a-41443cba773d" />
+        <classShapeMoniker Id="719dd841-ced5-4986-9c40-20297e023fd7" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

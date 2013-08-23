@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="diemsonvietdb" Class="DiemSonVietDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=diemsonvietdb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="diemsonvietdbConnectionString2" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="diemsonviet_db" Class="DiemSonVietDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=diemsonviet_db;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DiemSonVietDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.WebLinks" Member="WebLinks">
     <Type Name="WebLink">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -75,4 +75,36 @@
       <Association Name="tbl_Category_tbl_ContentPage" Member="tbl_Category" ThisKey="CateId" OtherKey="Id" Type="tbl_Category" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Category_News" Member="Category_News">
+    <Type Name="Category_New">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsHidden" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Category_New_New" Member="News" ThisKey="Id" OtherKey="CateId" Type="New" />
+    </Type>
+  </Table>
+  <Table Name="dbo.News" Member="News">
+    <Type Name="New" Id="ID1">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ArTitle" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ArSummary" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ArContent" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageDefault" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberView" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PublishDated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HotNews" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MetaTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MetaKeyword" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MetaDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Category_New_New" Member="Category_New" ThisKey="CateId" OtherKey="Id" Type="Category_New" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetTopEachCategoryNews" Method="GetTopEachCategoryNews">
+    <ElementType IdRef="ID1" />
+  </Function>
 </Database>

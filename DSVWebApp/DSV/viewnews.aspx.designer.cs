@@ -10,15 +10,24 @@
 namespace DSV {
     
     
-    public partial class news {
+    public partial class viewnews {
         
         /// <summary>
-        /// ucNews1 control.
+        /// liTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DSV.usercontrols.ucNews ucNews1;
+        protected global::System.Web.UI.WebControls.Literal liTitle;
+        
+        /// <summary>
+        /// liContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal liContent;
     }
 }

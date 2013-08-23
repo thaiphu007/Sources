@@ -18,6 +18,8 @@
             <div id="menuitem">
                 <ul>
                     <li> <a href="default.aspx">Menu</a></li>
+                    <li> <a href="ManageCategoryNews.aspx">Chuyên Mục</a></li>
+                    <li> <a href="ManageNews.aspx">Tin Tức</a></li>
                 </ul>
             </div>            
         </div>

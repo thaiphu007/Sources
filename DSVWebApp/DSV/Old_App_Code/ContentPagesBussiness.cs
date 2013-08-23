@@ -169,6 +169,18 @@ public class ContentPagesBussiness
         return Info;
 
     }
+    public static New GetInfo_News(int Id)
+    {
+
+        New Info = null;
+
+        using (var db = new DiemSonVietDBDataContext())
+        {
+            Info = (from c in db.News where c.Id == Id select c).FirstOrDefault();
+        }
+        return Info;
+
+    }
 
     public static string GetInfo_V2(string keyword)
     {
@@ -212,11 +224,44 @@ public class ContentPagesBussiness
         }
         return Id;
     }
+    public static int Save_News(New Info)
+    {
+        int Id = -1;
+        using (var db = new DiemSonVietDBDataContext())
+        {
+            var ct = (from c in db.News where c.Id == Info.Id select c).FirstOrDefault();
+            if (ct != null)
+            {
+                ct.ArTitle = Info.ArTitle;
+                ct.ArSummary = Info.ArSummary;
+                ct.ArContent = Info.ArContent;
+                ct.CateId = Info.CateId;
+                ct.IsPublished = Info.IsPublished;
+                ct.CreateDated = DateTime.Now;
+                ct.MetaTitle = Info.MetaTitle;
+                ct.MetaKeyword = Info.MetaKeyword;
+                ct.MetaDesc = Info.MetaDesc;
+                if (!string.IsNullOrEmpty(Info.ImageDefault))
+                    ct.ImageDefault = Info.ImageDefault;
+                ct.CateId = Info.CateId;
+                ct.PublishDated = DateTime.Now;
+            }
+            else
+            {
+                Info.CreateDated = DateTime.Now;
+                Info.PublishDated = DateTime.Now;
+                db.News.InsertOnSubmit(Info);
+            }
+            db.SubmitChanges();
+            Id = Info.Id;
+        }
+        return Id;
+    }
 
     public static void Delete_V2(string ListId)
     {
-        string[] Ids = ListId.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-        using (DiemSonVietDBDataContext db = new DiemSonVietDBDataContext())
+        string[] Ids = ListId.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        using (var db = new DiemSonVietDBDataContext())
         {
             var list = from c in db.tbl_ContentPages where Ids.Contains(c.Id.ToString()) select c;
             db.tbl_ContentPages.DeleteAllOnSubmit(list);

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/MasterPage.master" AutoEventWireup="true" Inherits="Content" EnableViewState="false" Codebehind="Content.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+     <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+    <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
 <script type="text/javascript" src="<%= Contants.SITE_NAME %>scripts/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="<%= Contants.SITE_NAME %>scripts/slickcustomscroll.js"></script>
 <script type="text/javascript">

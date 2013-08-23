@@ -6,8 +6,7 @@
 <head id="Head1" runat="server">
     <title>Điểm Son Việt</title>
     <link rel="shortcut icon" type="image/x-icon" href='http://diemsonviet.com/images/favicon.ico' />   
-    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
-    <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+   
 </head>
 <body>
 <form id="form1" runat="server">

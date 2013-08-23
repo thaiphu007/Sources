@@ -14,7 +14,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cpl1" Runat="Server">
 <div class="content-head">
-    <a name="fb_share" type="button" href="http://www.facebook.com/sharer.php">Share</a>
     <div id="rtop">    
         <uc1:uctopslide ID="ucTopSlide1" runat="server" />    
     </div>
