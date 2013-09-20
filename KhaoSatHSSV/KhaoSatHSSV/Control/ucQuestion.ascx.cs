@@ -12,6 +12,7 @@ namespace KhaoSatHSSV.Control
     public partial class ucQuestion : System.Web.UI.UserControl
     {
         public int GroupId { get; set; }
+        private readonly KHAOSATDataContext db=new KHAOSATDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -34,8 +35,21 @@ namespace KhaoSatHSSV.Control
                 if(item!=null)
                 {
                     var ucChooseLevel = item.FindControl("ucChooseLevel1") as ucChooseLevel;
-                    if (ucChooseLevel != null)
-                        totalPoint += ucChooseLevel.GetPoint;
+                    var hdQuestionId = item.FindControl("hdQuestionId") as HiddenField;
+                    if (ucChooseLevel != null&&hdQuestionId!=null)
+                    {
+                        int point = ucChooseLevel.GetPoint;
+                        var answer = new Survey_Answer
+                                         {
+                                             ChooseLevel = point,
+                                             QuestionId = int.Parse(hdQuestionId.Value)
+
+                                         };
+                        if (Session["TesterId"] != null)
+                            answer.TesterId = int.Parse(Session["TesterId"].ToString());
+                        db.Survey_Answers.InsertOnSubmit(answer);
+                        totalPoint += point;
+                    }
                 }
             }
             return totalPoint;

@@ -42,12 +42,12 @@ namespace KhaoSatHSSV.Classes.DB
     partial void Inserttbl_Subject(tbl_Subject instance);
     partial void Updatetbl_Subject(tbl_Subject instance);
     partial void Deletetbl_Subject(tbl_Subject instance);
-    partial void InsertTester(Tester instance);
-    partial void UpdateTester(Tester instance);
-    partial void DeleteTester(Tester instance);
     partial void InsertPointAverage(PointAverage instance);
     partial void UpdatePointAverage(PointAverage instance);
     partial void DeletePointAverage(PointAverage instance);
+    partial void InsertTester(Tester instance);
+    partial void UpdateTester(Tester instance);
+    partial void DeleteTester(Tester instance);
     #endregion
 		
 		public KHAOSATDataContext() : 
@@ -112,19 +112,19 @@ namespace KhaoSatHSSV.Classes.DB
 			}
 		}
 		
-		public System.Data.Linq.Table<Tester> Testers
-		{
-			get
-			{
-				return this.GetTable<Tester>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PointAverage> PointAverages
 		{
 			get
 			{
 				return this.GetTable<PointAverage>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Tester> Testers
+		{
+			get
+			{
+				return this.GetTable<Tester>();
 			}
 		}
 	}
@@ -848,6 +848,294 @@ namespace KhaoSatHSSV.Classes.DB
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PointAverage")]
+	public partial class PointAverage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private System.Nullable<double> _Ten;
+		
+		private System.Nullable<double> _Eleven;
+		
+		private System.Nullable<double> _Twelve;
+		
+		private System.Nullable<int> _SubjectId;
+		
+		private string _Block;
+		
+		private System.Nullable<int> _TesterId;
+		
+		private EntityRef<tbl_Subject> _tbl_Subject;
+		
+		private EntityRef<Tester> _Tester;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnTenChanging(System.Nullable<double> value);
+    partial void OnTenChanged();
+    partial void OnElevenChanging(System.Nullable<double> value);
+    partial void OnElevenChanged();
+    partial void OnTwelveChanging(System.Nullable<double> value);
+    partial void OnTwelveChanged();
+    partial void OnSubjectIdChanging(System.Nullable<int> value);
+    partial void OnSubjectIdChanged();
+    partial void OnBlockChanging(string value);
+    partial void OnBlockChanged();
+    partial void OnTesterIdChanging(System.Nullable<int> value);
+    partial void OnTesterIdChanged();
+    #endregion
+		
+		public PointAverage()
+		{
+			this._tbl_Subject = default(EntityRef<tbl_Subject>);
+			this._Tester = default(EntityRef<Tester>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ten", DbType="Float")]
+		public System.Nullable<double> Ten
+		{
+			get
+			{
+				return this._Ten;
+			}
+			set
+			{
+				if ((this._Ten != value))
+				{
+					this.OnTenChanging(value);
+					this.SendPropertyChanging();
+					this._Ten = value;
+					this.SendPropertyChanged("Ten");
+					this.OnTenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Eleven", DbType="Float")]
+		public System.Nullable<double> Eleven
+		{
+			get
+			{
+				return this._Eleven;
+			}
+			set
+			{
+				if ((this._Eleven != value))
+				{
+					this.OnElevenChanging(value);
+					this.SendPropertyChanging();
+					this._Eleven = value;
+					this.SendPropertyChanged("Eleven");
+					this.OnElevenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twelve", DbType="Float")]
+		public System.Nullable<double> Twelve
+		{
+			get
+			{
+				return this._Twelve;
+			}
+			set
+			{
+				if ((this._Twelve != value))
+				{
+					this.OnTwelveChanging(value);
+					this.SendPropertyChanging();
+					this._Twelve = value;
+					this.SendPropertyChanged("Twelve");
+					this.OnTwelveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubjectId", DbType="Int")]
+		public System.Nullable<int> SubjectId
+		{
+			get
+			{
+				return this._SubjectId;
+			}
+			set
+			{
+				if ((this._SubjectId != value))
+				{
+					if (this._tbl_Subject.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSubjectIdChanging(value);
+					this.SendPropertyChanging();
+					this._SubjectId = value;
+					this.SendPropertyChanged("SubjectId");
+					this.OnSubjectIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Block", DbType="NVarChar(50)")]
+		public string Block
+		{
+			get
+			{
+				return this._Block;
+			}
+			set
+			{
+				if ((this._Block != value))
+				{
+					this.OnBlockChanging(value);
+					this.SendPropertyChanging();
+					this._Block = value;
+					this.SendPropertyChanged("Block");
+					this.OnBlockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TesterId", DbType="Int")]
+		public System.Nullable<int> TesterId
+		{
+			get
+			{
+				return this._TesterId;
+			}
+			set
+			{
+				if ((this._TesterId != value))
+				{
+					if (this._Tester.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTesterIdChanging(value);
+					this.SendPropertyChanging();
+					this._TesterId = value;
+					this.SendPropertyChanged("TesterId");
+					this.OnTesterIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Subject_PointAverage", Storage="_tbl_Subject", ThisKey="SubjectId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public tbl_Subject tbl_Subject
+		{
+			get
+			{
+				return this._tbl_Subject.Entity;
+			}
+			set
+			{
+				tbl_Subject previousValue = this._tbl_Subject.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_Subject.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_Subject.Entity = null;
+						previousValue.PointAverages.Remove(this);
+					}
+					this._tbl_Subject.Entity = value;
+					if ((value != null))
+					{
+						value.PointAverages.Add(this);
+						this._SubjectId = value.Id;
+					}
+					else
+					{
+						this._SubjectId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_Subject");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tester_PointAverage", Storage="_Tester", ThisKey="TesterId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public Tester Tester
+		{
+			get
+			{
+				return this._Tester.Entity;
+			}
+			set
+			{
+				Tester previousValue = this._Tester.Entity;
+				if (((previousValue != value) 
+							|| (this._Tester.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tester.Entity = null;
+						previousValue.PointAverages.Remove(this);
+					}
+					this._Tester.Entity = value;
+					if ((value != null))
+					{
+						value.PointAverages.Add(this);
+						this._TesterId = value.Id;
+					}
+					else
+					{
+						this._TesterId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Tester");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tester")]
 	public partial class Tester : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -907,6 +1195,8 @@ namespace KhaoSatHSSV.Classes.DB
 		private System.Nullable<int> _ResultS;
 		
 		private System.Nullable<int> _ResultC;
+		
+		private System.Nullable<int> _ResultE;
 		
 		private EntitySet<Survey_Answer> _Survey_Answers;
 		
@@ -970,6 +1260,8 @@ namespace KhaoSatHSSV.Classes.DB
     partial void OnResultSChanged();
     partial void OnResultCChanging(System.Nullable<int> value);
     partial void OnResultCChanged();
+    partial void OnResultEChanging(System.Nullable<int> value);
+    partial void OnResultEChanged();
     #endregion
 		
 		public Tester()
@@ -1519,6 +1811,26 @@ namespace KhaoSatHSSV.Classes.DB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResultE", DbType="Int")]
+		public System.Nullable<int> ResultE
+		{
+			get
+			{
+				return this._ResultE;
+			}
+			set
+			{
+				if ((this._ResultE != value))
+				{
+					this.OnResultEChanging(value);
+					this.SendPropertyChanging();
+					this._ResultE = value;
+					this.SendPropertyChanged("ResultE");
+					this.OnResultEChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tester_Survey_Answer", Storage="_Survey_Answers", ThisKey="Id", OtherKey="TesterId")]
 		public EntitySet<Survey_Answer> Survey_Answers
 		{
@@ -1587,294 +1899,6 @@ namespace KhaoSatHSSV.Classes.DB
 		{
 			this.SendPropertyChanging();
 			entity.Tester = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PointAverage")]
-	public partial class PointAverage : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _Id;
-		
-		private System.Nullable<double> _Ten;
-		
-		private System.Nullable<double> _Eleven;
-		
-		private System.Nullable<double> _Twelve;
-		
-		private System.Nullable<int> _SubjectId;
-		
-		private string _Block;
-		
-		private System.Nullable<int> _TesterId;
-		
-		private EntityRef<tbl_Subject> _tbl_Subject;
-		
-		private EntityRef<Tester> _Tester;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(long value);
-    partial void OnIdChanged();
-    partial void OnTenChanging(System.Nullable<double> value);
-    partial void OnTenChanged();
-    partial void OnElevenChanging(System.Nullable<double> value);
-    partial void OnElevenChanged();
-    partial void OnTwelveChanging(System.Nullable<double> value);
-    partial void OnTwelveChanged();
-    partial void OnSubjectIdChanging(System.Nullable<int> value);
-    partial void OnSubjectIdChanged();
-    partial void OnBlockChanging(string value);
-    partial void OnBlockChanged();
-    partial void OnTesterIdChanging(System.Nullable<int> value);
-    partial void OnTesterIdChanged();
-    #endregion
-		
-		public PointAverage()
-		{
-			this._tbl_Subject = default(EntityRef<tbl_Subject>);
-			this._Tester = default(EntityRef<Tester>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ten", DbType="Float")]
-		public System.Nullable<double> Ten
-		{
-			get
-			{
-				return this._Ten;
-			}
-			set
-			{
-				if ((this._Ten != value))
-				{
-					this.OnTenChanging(value);
-					this.SendPropertyChanging();
-					this._Ten = value;
-					this.SendPropertyChanged("Ten");
-					this.OnTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Eleven", DbType="Float")]
-		public System.Nullable<double> Eleven
-		{
-			get
-			{
-				return this._Eleven;
-			}
-			set
-			{
-				if ((this._Eleven != value))
-				{
-					this.OnElevenChanging(value);
-					this.SendPropertyChanging();
-					this._Eleven = value;
-					this.SendPropertyChanged("Eleven");
-					this.OnElevenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twelve", DbType="Float")]
-		public System.Nullable<double> Twelve
-		{
-			get
-			{
-				return this._Twelve;
-			}
-			set
-			{
-				if ((this._Twelve != value))
-				{
-					this.OnTwelveChanging(value);
-					this.SendPropertyChanging();
-					this._Twelve = value;
-					this.SendPropertyChanged("Twelve");
-					this.OnTwelveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubjectId", DbType="Int")]
-		public System.Nullable<int> SubjectId
-		{
-			get
-			{
-				return this._SubjectId;
-			}
-			set
-			{
-				if ((this._SubjectId != value))
-				{
-					if (this._tbl_Subject.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSubjectIdChanging(value);
-					this.SendPropertyChanging();
-					this._SubjectId = value;
-					this.SendPropertyChanged("SubjectId");
-					this.OnSubjectIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Block", DbType="NVarChar(50)")]
-		public string Block
-		{
-			get
-			{
-				return this._Block;
-			}
-			set
-			{
-				if ((this._Block != value))
-				{
-					this.OnBlockChanging(value);
-					this.SendPropertyChanging();
-					this._Block = value;
-					this.SendPropertyChanged("Block");
-					this.OnBlockChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TesterId", DbType="Int")]
-		public System.Nullable<int> TesterId
-		{
-			get
-			{
-				return this._TesterId;
-			}
-			set
-			{
-				if ((this._TesterId != value))
-				{
-					if (this._Tester.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTesterIdChanging(value);
-					this.SendPropertyChanging();
-					this._TesterId = value;
-					this.SendPropertyChanged("TesterId");
-					this.OnTesterIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_Subject_PointAverage", Storage="_tbl_Subject", ThisKey="SubjectId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public tbl_Subject tbl_Subject
-		{
-			get
-			{
-				return this._tbl_Subject.Entity;
-			}
-			set
-			{
-				tbl_Subject previousValue = this._tbl_Subject.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_Subject.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_Subject.Entity = null;
-						previousValue.PointAverages.Remove(this);
-					}
-					this._tbl_Subject.Entity = value;
-					if ((value != null))
-					{
-						value.PointAverages.Add(this);
-						this._SubjectId = value.Id;
-					}
-					else
-					{
-						this._SubjectId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tbl_Subject");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tester_PointAverage", Storage="_Tester", ThisKey="TesterId", OtherKey="Id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public Tester Tester
-		{
-			get
-			{
-				return this._Tester.Entity;
-			}
-			set
-			{
-				Tester previousValue = this._Tester.Entity;
-				if (((previousValue != value) 
-							|| (this._Tester.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tester.Entity = null;
-						previousValue.PointAverages.Remove(this);
-					}
-					this._Tester.Entity = value;
-					if ((value != null))
-					{
-						value.PointAverages.Add(this);
-						this._TesterId = value.Id;
-					}
-					else
-					{
-						this._TesterId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Tester");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

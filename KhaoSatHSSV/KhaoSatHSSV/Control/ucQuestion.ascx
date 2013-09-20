@@ -6,6 +6,7 @@
         <div class="question">
          <p><span style="font-weight: bold"><%# Container.ItemIndex+1 %>.</span> <%#Eval("QuestionName") %> 
           <asp:HiddenField ID="hdGroupId" runat="server" Value='<%# GroupId %>' />
+          <asp:HiddenField ID="hdQuestionId" runat="server" Value='<%#Eval("Id") %>' />
          </p>
           <uc1:ucChooseLevel ID="ucChooseLevel1" runat="server" QuestionId='<%#Eval("Id") %>' />
           </div>

@@ -1,0 +1,79 @@
+﻿body {
+}
+.main {
+    width:1024px;margin: 0 auto;
+}
+
+.style1
+    {
+        width: 100%;
+        
+    }
+    .style1 td{
+         border-bottom: 1px solid burlywood;
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
+    .ct_Header {
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+    }
+    .ct_title {
+        text-align: justify;
+    }
+    .ct_item {
+        font-weight: bold;
+        padding:10px 0px 0px 0px;
+    }
+    .ct_subitem 
+    {
+        width: 100%;
+        padding: 10px 0px 10px 10px;
+        
+    }
+    .subitem_box {
+        width: 650px;margin: 0 auto;border:1px solid black;
+        padding-left:20px 
+    }
+    .subitem_box span {
+        font-weight: bold;
+        padding-right: 10px;
+        overflow: hidden;
+    }
+    .ct_questions {
+        width: 100%;
+        overflow: hidden;
+    }
+    .ct_questions span.title {
+        font-weight: bold;
+    }
+    
+    .item_questions .chooselevel 
+    {
+        width: 100%;
+        padding-left: 5px;
+        font-size: 12px;
+    }
+    .tbl_Average {
+        border-bottom: 1px solid black; 
+        border-right: 1px solid black; 
+    }
+    .tbl_Average input {
+        width: 60px;
+    }
+    .tbl_Average td{
+        border: 1px solid black;
+        border-bottom: 0px solid; 
+        border-right: 0px solid; 
+    }
+    .question {
+        width: 330px;float: left;padding-right: 5px;text-align: left;
+        min-height: 104px;
+    }
+    .group {
+        overflow: hidden;width: 100%;
+    }
+    .btnNext {
+        float: right;
+    }

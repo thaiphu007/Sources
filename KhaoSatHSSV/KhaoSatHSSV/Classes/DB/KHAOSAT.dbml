@@ -37,6 +37,19 @@
       <Association Name="tbl_Subject_PointAverage" Member="PointAverages" ThisKey="Id" OtherKey="SubjectId" Type="PointAverage" />
     </Type>
   </Table>
+  <Table Name="dbo.PointAverage" Member="PointAverages">
+    <Type Name="PointAverage">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Eleven" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Twelve" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SubjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Block" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TesterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Subject_PointAverage" Member="tbl_Subject" ThisKey="SubjectId" OtherKey="Id" Type="tbl_Subject" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Tester_PointAverage" Member="Tester" ThisKey="TesterId" OtherKey="Id" Type="Tester" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
   <Table Name="dbo.Tester" Member="Testers">
     <Type Name="Tester">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -66,21 +79,9 @@
       <Column Name="ResultA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ResultS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ResultC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tester_Survey_Answer" Member="Survey_Answers" ThisKey="Id" OtherKey="TesterId" Type="Survey_Answer" />
       <Association Name="Tester_PointAverage" Member="PointAverages" ThisKey="Id" OtherKey="TesterId" Type="PointAverage" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PointAverage" Member="PointAverages">
-    <Type Name="PointAverage">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ten" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Eleven" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Twelve" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SubjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Block" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TesterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tbl_Subject_PointAverage" Member="tbl_Subject" ThisKey="SubjectId" OtherKey="Id" Type="tbl_Subject" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="Tester_PointAverage" Member="Tester" ThisKey="TesterId" OtherKey="Id" Type="Tester" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
 </Database>

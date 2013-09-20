@@ -1,82 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Root.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="KhaoSatHSSV.Default" %>
 <%@ Register src="Control/ucGroup.ascx" tagname="ucGroup" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-    .style1
-    {
-        width: 100%;
-        
-    }
-    .style1 td{
-         border-bottom: 1px solid burlywood;
-        padding-bottom: 3px;
-        padding-top: 3px;
-    }
-    .ct_Header {
-        font-weight: bold;
-        font-size: 16px;
-        text-align: center;
-    }
-    .ct_title {
-        text-align: justify;
-    }
-    .ct_item {
-        font-weight: bold;
-        padding:10px 0px 0px 0px;
-    }
-    .ct_subitem 
-    {
-        width: 100%;
-        padding: 10px 0px 10px 10px;
-        
-    }
-    .subitem_box {
-        width: 650px;margin: 0 auto;border:1px solid black;
-        padding-left:20px 
-    }
-    .subitem_box span {
-        font-weight: bold;
-        padding-right: 10px;
-        overflow: hidden;
-    }
-    .ct_questions {
-        width: 100%;
-        overflow: hidden;
-    }
-    .ct_questions span.title {
-        font-weight: bold;
-    }
-    
-    .item_questions .chooselevel 
-    {
-        width: 100%;
-        padding-left: 5px;
-        font-size: 12px;
-    }
-    .tbl_Average {
-        border-bottom: 1px solid black; 
-        border-right: 1px solid black; 
-    }
-    .tbl_Average input {
-        width: 60px;
-    }
-    .tbl_Average td{
-        border: 1px solid black;
-        border-bottom: 0px solid; 
-        border-right: 0px solid; 
-    }
-    .question {
-        width: 330px;float: left;padding-right: 5px;text-align: left;
-        min-height: 104px;
-    }
-    .group {
-        overflow: hidden;width: 100%;
-    }
-    .btnNext {
-        float: right;
-    }
-</style>
-<script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         HideSurvey();
@@ -189,7 +114,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Điểm Thi ĐH, CĐ:</td>
         <td valign="middle">
-            <asp:TextBox ID="txtPointTest" runat="server" Width="50px" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtPointTest" runat="server" Width="50px" Text="0" MaxLength="2"></asp:TextBox>
         &nbsp; Trưởng Dự Thi:<asp:TextBox ID="txtSchoolTest" runat="server" Width="170px" 
                 MaxLength="50" ></asp:TextBox>
         </td>
@@ -213,7 +138,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Phù Hợp:</td>
         <td colspan="3">
-            <asp:RadioButton ID="radMatch" runat="server" Text="Có" />
+            <asp:RadioButton ID="radMatch" runat="server" Text="Có" Checked="True" />
 &nbsp;<asp:RadioButton ID="radUnMatch" runat="server" Text="Không" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lý Do:<asp:TextBox ID="txtReason1" 
                 runat="server" Width="205px" MaxLength="250" ></asp:TextBox>
@@ -381,88 +306,88 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
             <td>
                 Toán</td>
             <td>
-                 <asp:TextBox ID="txtToan10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtToan10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtToan11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtToan11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtToan12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtToan12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Vật Lý</td>
             <td>
-                 <asp:TextBox ID="txtVatLy10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtVatLy10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtVatLy11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtVatLy11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtVatLy12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtVatLy12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Hóa Học</td>
              <td>
-                 <asp:TextBox ID="txtHoaHoc10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtHoaHoc10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtHoaHoc11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtHoaHoc11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtHoaHoc12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtHoaHoc12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Văn</td>
             <td>
-                 <asp:TextBox ID="txtVan10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtVan10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtVan11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtVan11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtVan12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtVan12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Lịch Sử</td>
             <td>
-                 <asp:TextBox ID="txtLichSu10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtLichSu10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtLichSu11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtLichSu11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtLichSu12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtLichSu12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Địa Lý</td>
              <td>
-                 <asp:TextBox ID="txtDiaLy10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtDiaLy10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtDiaLy11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtDiaLy11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtDiaLy12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtDiaLy12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                Tiếng Anh</td>
              <td>
-                 <asp:TextBox ID="txtTiengAnh10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtTiengAnh10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtTiengAnh11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtTiengAnh11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtTiengAnh12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtTiengAnh12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
                 Sinh</td>
              <td>
-                 <asp:TextBox ID="txtSinh10" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtSinh10" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                 <asp:TextBox ID="txtSinh11" runat="server"></asp:TextBox></td>
+                 <asp:TextBox ID="txtSinh11" runat="server" Text="0"></asp:TextBox></td>
             <td>
-                <asp:TextBox ID="txtSinh12" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtSinh12" runat="server" Text="0"></asp:TextBox>
             </td>
         </tr>
     </table>
