@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14" name="KHAOSAT">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 14" name="KHAOSAT">
   <DataContextMoniker Name="/KHAOSATDataContext" />
   <nestedChildShapes>
     <classShape Id="7f22a80c-9e66-4ba4-997f-61478149b005" absoluteBounds="1, 0.875, 2, 1.5785953776041666">
@@ -59,19 +59,43 @@
         <elementListCompartment Id="82e8cd13-68f0-4b67-af80-a2c8c0620a62" absoluteBounds="0.51500000000000012, 4.46, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 5.70714884440104); (4.54166666666667 : 5.70714884440104 : JumpStart); (4.70833333333333 : 5.70714884440104 : JumpEnd); (6.75 : 5.70714884440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 5.70714884440104); (6.75 : 5.70714884440104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KHAOSATDataContext/Tester/Tester_Survey_Answer" />
       <nodes>
         <classShapeMoniker Id="ff8e44c1-6c26-40bf-81f9-89a23eb3e0f7" />
         <classShapeMoniker Id="3ff0b7cd-2d23-4628-9045-554a60024551" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 8.07774983723958); (3.5 : 8.07774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 8.07774983723958); (3.5 : 8.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/KHAOSATDataContext/Tester/Tester_PointAverage" />
       <nodes>
         <classShapeMoniker Id="ff8e44c1-6c26-40bf-81f9-89a23eb3e0f7" />
         <classShapeMoniker Id="e2caffcb-1445-4f23-8253-c785f32a1c09" />
       </nodes>
     </associationConnector>
+    <classShape Id="af94e1f1-b94b-4d5c-b8ab-087cac85a1e4" absoluteBounds="6.375, 0.75, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/KHAOSATDataContext/KhoiThi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54f0ffd8-22ff-4445-a5ac-64bb278e8dfb" absoluteBounds="6.39, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e5c97af6-cc10-4d63-8fc3-a8af4d3e82bd" absoluteBounds="6.375, 7.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/KHAOSATDataContext/Province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e74a757e-9e4b-4577-ae96-d147ecd290c6" absoluteBounds="6.39, 8.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64d95304-efa0-4339-a305-479a550b1122" absoluteBounds="11.25, 3.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/KHAOSATDataContext/TruongTHPT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f1a4ec3-1a9d-479e-bad3-77794eda5301" absoluteBounds="11.265, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="41bfc355-5d1f-4ab4-a9e9-516e23a0feb2" absoluteBounds="10, 1.625, 2, 1.9631982421875">
+      <DataClassMoniker Name="/KHAOSATDataContext/College" />
+      <nestedChildShapes>
+        <elementListCompartment Id="efae7692-70c1-4e90-93ac-197628a57447" absoluteBounds="10.015, 2.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -1,48 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
+using KhaoSatHSSV.Classes;
+using KhaoSatHSSV.Classes.DB;
+using LinqToExcel;
+using KhoiThi = LinqToExcel.KhoiThi;
+using Province = LinqToExcel.Province;
 
 namespace KhaoSatHSSV
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        private KHAOSATDataContext db = new KHAOSATDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-          HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.futabuslines.com.vn/Router.aspx");
-            request.CookieContainer = new CookieContainer();
+           
+            
+            string filename = @"C:\Users\user\Downloads\Thong tin truong Tinh - THPT.xlsx";
 
-            HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+            ExcelProvider provider = ExcelProvider.Create(filename);
+            //foreach (Province per in (from p in provider.GetSheet<Province>() select p))
+            //{
+            //    if (!string.IsNullOrEmpty(per.Tinh))
+            //    {
+            //        var province = new Classes.DB.Province
+            //                           {
+            //                               Code = per.Ma,
+            //                               ProvinceName = per.Tinh
+            //                           };
+            //        db.Provinces.InsertOnSubmit(province);
+            //        db.SubmitChanges();
 
+            //    }
+            //}
+            //foreach (KhoiThi per in (from p in provider.GetSheet<KhoiThi>() select p))
+            //{
+            //    if (!string.IsNullOrEmpty(per.Mon2))
+            //    {
+            //        Response.Write(string.Format("{0}-{1}-{2}-{3}<br>",per.Khoi,per.Mon1,per.Mon2,per.Mon3));
+            //        var khoithi = new Classes.DB.KhoiThi
+            //                          {
+            //                              Khoi = per.Khoi,
+            //                              Mon1 = per.Mon1,
+            //                              Mon2 = per.Mon2,
+            //                              Mon3 = per.Mon3
 
-
-            // Print the properties of each cookie. 
-            foreach (Cookie cook in response.Cookies)
-            {
-                Response.Write("Cookie:");
-                Response.Write(string.Format("{0} = {1}", cook.Name, cook.Value));
-                Response.Write(string.Format("Domain: {0}", cook.Domain));
-                Response.Write(string.Format("Path: {0}", cook.Path));
-                Response.Write(string.Format("Port: {0}", cook.Port));
-                Response.Write(string.Format("Secure: {0}", cook.Secure));
-
-                Response.Write(string.Format("When issued: {0}", cook.TimeStamp));
-                Response.Write(string.Format("Expires: {0} (expired? {1})",
-                                             cook.Expires, cook.Expired));
-                Response.Write(string.Format("Don't save: {0}", cook.Discard));
-                Response.Write(string.Format("Comment: {0}", cook.Comment));
-                Response.Write(string.Format("Uri for comments: {0}", cook.CommentUri));
-                Response.Write(string.Format("Version: RFC {0}", cook.Version == 1 ? "2109" : "2965"));
-
-                // Show the string representation of the cookie.
-                Response.Write(string.Format("String: {0}", cook.ToString()));
-
-            }
+            //                          };
+            //        db.KhoiThis.InsertOnSubmit(khoithi);
+            //        db.SubmitChanges();
+            //    }
+            //}
+            //var list = (from p in provider.GetSheet<THPT>() select p);
+            ////Response.Write(list.Count());
+            ////Response.End();
+            //foreach (THPT per in list)
+            //{
+            //    if (!string.IsNullOrEmpty(per.TenTruong))
+            //    {
+            //        Response.Write(string.Format("{0}-{1}-{2}-{3}-<br>", per.KhuVuc, per.TenTruong, per.MaTruong, per.DiaChi));
+            //        var truong = new Classes.DB.TruongTHPT
+            //                          {
+            //                              MaTinh = Commons.TryParseInt(per.MaTinh??"0"),
+            //                              MaTruong = Commons.TryParseInt(per.MaTruong??"0"),
+            //                              TenTruong = per.TenTruong??string.Empty,
+            //                              DiaChi = per.DiaChi??string.Empty,
+            //                              KhuVuc = per.KhuVuc??string.Empty
+            //                          };
+            //        db.TruongTHPTs.InsertOnSubmit(truong);
+            //        db.SubmitChanges();
+            //    }
+            //}
+            //var list = (from p in provider.GetSheet<TruongDHCD>() select p);
+            ////Response.Write(list.Count());
+            ////Response.End();
+            //foreach (TruongDHCD per in list)
+            //{
+            //    if (!string.IsNullOrEmpty(per.TenTruong))
+            //    {
+            //        Response.Write(string.Format("{0}-{1}<br>", per.TenTruong, per.MaTruong));
+            //        var truong = new Classes.DB.College()
+            //        {
+            //            MaTruong = per.MaTruong??string.Empty,
+            //            TenTruong = per.TenTruong,
+            //            CapBac = per.TenTruong.ToLower().Contains("CAO ĐẲNG".ToLower())?2:1
+            //        };
+            //        db.Colleges.InsertOnSubmit(truong);
+            //        db.SubmitChanges();
+            //    }
+            //}
+        }
+        public override void Dispose()
+        {
+            base.Dispose();
+           // db.Dispose();
         }
     }
 }

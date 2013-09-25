@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -63,7 +64,9 @@
     <Content Include="Default.aspx" />
     <Content Include="js\jquery-1.8.2.js" />
     <Content Include="ViewResult.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -79,6 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KHAOSAT.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\LinqExcelProvider25.cs" />
     <Compile Include="Control\ucChooseLevel.ascx.cs">
       <DependentUpon>ucChooseLevel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +135,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\Thong tin truong Tinh - THPT.xlsx" />
     <None Include="Classes\DB\KHAOSAT.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>KHAOSAT.designer.cs</LastGenOutput>

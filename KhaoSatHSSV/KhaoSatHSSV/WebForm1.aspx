@@ -5,16 +5,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
 </head>
 <body>
-    <form id="form1" runat="server" action="http://www.futabuslines.com.vn/Router.aspx" method="post">
+    <form id="form1" runat="server"  method="post">
     <div>
+       
+        
+        
         <input id="cbbDiemDi_VI" name="cbbDiemDi_VI" type="hidden" value="38">
          <input id="cbbDiemDi_I" name="cbbDiemDi" type="hidden" value="Cà Mau">
         <input id="cbbDiemDen_VI" name="cbbDiemDen_VI" type="hidden" value="12">
          <input id="cbbDiemDen_I" name="cbbDiemDen" type="hidden" value="Cần Thơ">
         
-        <input id="Submit1" type="submit" value="submit" />
+        <input id="btSearch" name="btnSearch" type="submit" value="submit" />
+
     </div>
     </form>
 </body>

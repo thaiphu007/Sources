@@ -45,7 +45,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
     <table class="style1" cellpadding="0" cellspacing="0" >
     <tr>
         <td width="150px">
-            Họ Tên:</td>
+            Họ Tên: (<span style="color: red">*</span>)</td>
         <td width="350px">
             <asp:TextBox ID="txtFullName" runat="server" Width="330px" MaxLength="50"></asp:TextBox>
         </td>
@@ -73,7 +73,8 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Nơi Sinh:</td>
         <td>
-            <asp:TextBox ID="txtWhereBirth" runat="server" Width="190px" MaxLength="50"></asp:TextBox>
+            <asp:DropDownList ID="ddlWhereBirth" runat="server" Width="190px">
+            </asp:DropDownList>
         </td>
         <td>
             Điện Thoại</td>
@@ -88,15 +89,16 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
             <asp:TextBox ID="txtFavorite" runat="server" Width="330px" MaxLength="250"></asp:TextBox>
         </td>
         <td>
-            Trường Học THPT:</td>
-        <td>
-            <asp:TextBox ID="txtHighSchool" runat="server" Width="190px" MaxLength="50"></asp:TextBox>
+            Học THPT tại</td>
+        <td colspan="3">
+            <asp:DropDownList ID="ddlProvince" runat="server" Width="160px" AutoPostBack="True" OnSelectedIndexChanged="ddlProvince_SelectedChanged">
+            </asp:DropDownList>
+      
+             Trường:
+            <asp:DropDownList ID="ddlTruong" runat="server" Width="185px">
+            </asp:DropDownList>
         </td>
-        <td>
-            Tỉnh</td>
-        <td>
-            <asp:TextBox ID="txtProvince" runat="server" Width="100px" MaxLength="50"></asp:TextBox>
-        </td>
+        
     </tr>
     <tr>
         <td>
@@ -114,9 +116,9 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Điểm Thi ĐH, CĐ:</td>
         <td valign="middle">
-            <asp:TextBox ID="txtPointTest" runat="server" Width="50px" Text="0" MaxLength="2"></asp:TextBox>
-        &nbsp; Trưởng Dự Thi:<asp:TextBox ID="txtSchoolTest" runat="server" Width="170px" 
-                MaxLength="50" ></asp:TextBox>
+            <asp:TextBox ID="txtPointTest" runat="server" Width="20px" Text="0" MaxLength="2"></asp:TextBox>
+        &nbsp; Trường Dự Thi:<asp:DropDownList ID="ddlDuThi" runat="server" Width="204px">
+            </asp:DropDownList>
         </td>
         <td>
             Khối Thi:</td>
@@ -133,7 +135,8 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Trường Đang Học</td>
         <td>
-            <asp:TextBox ID="txtShoolLearning" runat="server" Width="330px" MaxLength="50"></asp:TextBox>
+            <asp:DropDownList ID="ddlDangHoc" runat="server" Width="334px">
+            </asp:DropDownList>
         </td>
         <td>
             Phù Hợp:</td>

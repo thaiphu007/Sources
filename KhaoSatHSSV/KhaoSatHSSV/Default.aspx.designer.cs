@@ -67,13 +67,13 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// txtWhereBirth control.
+        /// ddlWhereBirth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWhereBirth;
+        protected global::System.Web.UI.WebControls.DropDownList ddlWhereBirth;
         
         /// <summary>
         /// txtPhone control.
@@ -94,22 +94,22 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.TextBox txtFavorite;
         
         /// <summary>
-        /// txtHighSchool control.
+        /// ddlProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHighSchool;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProvince;
         
         /// <summary>
-        /// txtProvince control.
+        /// ddlTruong control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProvince;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTruong;
         
         /// <summary>
         /// txtDepartment control.
@@ -139,13 +139,13 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.TextBox txtPointTest;
         
         /// <summary>
-        /// txtSchoolTest control.
+        /// ddlDuThi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSchoolTest;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDuThi;
         
         /// <summary>
         /// chkBlockA control.
@@ -202,13 +202,13 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.TextBox txtBlockOrther;
         
         /// <summary>
-        /// txtShoolLearning control.
+        /// ddlDangHoc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtShoolLearning;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDangHoc;
         
         /// <summary>
         /// radMatch control.

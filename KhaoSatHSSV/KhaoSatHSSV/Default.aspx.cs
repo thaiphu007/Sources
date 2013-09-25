@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.UI.WebControls;
 using KhaoSatHSSV.Classes;
 using KhaoSatHSSV.Classes.DB;
@@ -9,7 +10,12 @@ namespace KhaoSatHSSV
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                LoadData();
+                ddlProvince.SelectedIndex = 0;
+                ddlProvince_SelectedChanged(null,null);
+            }
         }
 
         protected void btn_check(object sender, EventArgs e)
@@ -26,20 +32,20 @@ namespace KhaoSatHSSV
                                    Favorite = txtFavorite.Text,
                                    Gender = radNam.Checked,
                                    DateOfBirth = txtBirthDate.SelectedDate,
-                                   WhereBirth = txtWhereBirth.Text,
+                                   WhereBirth = ddlWhereBirth.Text,
                                    Phone = txtPhone.Text,
-                                   HightSchool = txtHighSchool.Text,
-                                   Province = txtProvince.Text,
+                                   HightSchool = ddlTruong.Text,
+                                   Province = ddlProvince.Text,
                                    Department = txtDepartment.Text,
                                    Reason = txtReason.Text,
                                    Scores = double.Parse(string.IsNullOrEmpty(txtPointTest.Text.Trim()) ? "0" : txtPointTest.Text.Trim()),
-                                   SchoolTest = txtSchoolTest.Text,
+                                   SchoolTest = ddlDuThi.Text,
                                    A = chkBlockA.Checked,
                                    B = chkBlockB.Checked,
                                    C=chkBlockC.Checked,
                                    D=chkBlockD.Checked,
                                    Orther = chkBlockOrther.Checked?txtBlockOrther.Text:string.Empty,
-                                   SchoolLearning = txtShoolLearning.Text,
+                                   SchoolLearning = ddlDangHoc.Text,
                                    IsMatch = radMatch.Checked,
                                    Reason1 = txtReason1.Text
                                };
@@ -81,6 +87,31 @@ namespace KhaoSatHSSV
 
             Response.Redirect(string.Format("/ViewResult.aspx?id={0}",id));
             
+        }
+
+        private void LoadData()
+        {
+            using (var db = new KHAOSATDataContext())
+            {
+                ddlProvince.DataSource = db.Provinces;
+                ddlProvince.DataTextField = "ProvinceName";
+                ddlProvince.DataValueField= "Code";
+                ddlProvince.DataBind();
+                ddlWhereBirth.DataSource = db.Provinces;
+                ddlWhereBirth.DataTextField = "ProvinceName";
+                ddlWhereBirth.DataValueField = "Code";
+                ddlWhereBirth.DataBind();
+
+                ddlDuThi.DataSource = db.Colleges;
+                ddlDuThi.DataTextField = "TenTruong";
+                ddlDuThi.DataValueField = "MaTruong";
+                ddlDuThi.DataBind();
+
+                ddlDangHoc.DataSource = db.Colleges;
+                ddlDangHoc.DataTextField = "TenTruong";
+                ddlDangHoc.DataValueField = "MaTruong";
+                ddlDangHoc.DataBind();
+            }
         }
         private PointAverage GetInfo(TextBox txt10,TextBox txt11,TextBox txt12,int testerId,SubjectName sbj)
         {
@@ -128,5 +159,17 @@ namespace KhaoSatHSSV
             Page.ClientScript.RegisterClientScriptBlock(GetType(), string.Format("message_{0}", DateTime.Now.Ticks.ToString()), string.Format("<script type='text/javascript'> $(document).ready(function(){{alert('{0}');showSurvey('survey5')}});</script>", message));
         }
 
+        protected void ddlProvince_SelectedChanged(object sender, EventArgs e)
+        {
+            using (var db = new KHAOSATDataContext())
+            {
+                var list =
+                    (from t in db.TruongTHPTs where t.MaTinh == Commons.TryParseInt(ddlProvince.SelectedValue) select t);
+                ddlTruong.DataSource = list;
+                ddlTruong.DataTextField = "TenTruong";
+                ddlTruong.DataValueField = "MaTruong";
+                ddlTruong.DataBind();
+            }
+        }
     }
 }
