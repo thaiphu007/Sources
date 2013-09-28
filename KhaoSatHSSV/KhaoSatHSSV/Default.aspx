@@ -26,8 +26,7 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+    
     <div class="ct_Header">PHIẾU KHẢO SÁT THÔNG TIN
     </div>
     <div class="ct_title">
@@ -135,7 +134,10 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Trường Đang Học</td>
         <td>
-            <asp:DropDownList ID="ddlDangHoc" runat="server" Width="334px">
+            <asp:DropDownList ID="ddlDangHoc" runat="server" Width="190px">
+            </asp:DropDownList>
+            Ngành
+             <asp:DropDownList ID="ddlNganh" runat="server" Width="100px">
             </asp:DropDownList>
         </td>
         <td>

@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="khaoSat_HSSV_db" Class="KHAOSATDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=khaoSat_HSSV_db;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="khaoSat_HSSV_dbConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Groups" Member="Groups">
-    <Type Name="Group">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="GroupName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Group_Question" Member="Questions" ThisKey="Id" OtherKey="GroupId" Type="Question" />
-    </Type>
-  </Table>
   <Table Name="dbo.Questions" Member="Questions">
     <Type Name="Question">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -50,40 +41,6 @@
       <Association Name="Tester_PointAverage" Member="Tester" ThisKey="TesterId" OtherKey="Id" Type="Tester" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.Tester" Member="Testers">
-    <Type Name="Tester">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Favorite" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DateOfBirth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="WhereBirth" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="HightSchool" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Department" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Reason" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Scores" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SchoolTest" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="A" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="B" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="C" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="D" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Orther" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SchoolLearning" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IsMatch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Reason1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="ResultR" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ResultI" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ResultA" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ResultS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ResultC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ResultE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Tester_Survey_Answer" Member="Survey_Answers" ThisKey="Id" OtherKey="TesterId" Type="Survey_Answer" />
-      <Association Name="Tester_PointAverage" Member="PointAverages" ThisKey="Id" OtherKey="TesterId" Type="PointAverage" />
-    </Type>
-  </Table>
   <Table Name="dbo.KhoiThi" Member="KhoiThis">
     <Type Name="KhoiThi">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -119,6 +76,64 @@
       <Column Name="LoaiTruong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CapBac" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="HienThi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Groups" Member="Groups">
+    <Type Name="Group">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DisplayOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Group_Question" Member="Questions" ThisKey="Id" OtherKey="GroupId" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhomNganh" Member="NhomNganhs">
+    <Type Name="NhomNganh">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ma" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenNhom" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nganh" Member="Nganhs">
+    <Type Name="Nganh">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenNganh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ma" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tester" Member="Testers">
+    <Type Name="Tester">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Favorite" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateOfBirth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WhereBirth" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="HightSchool" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Scores" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SchoolTest" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="A" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="B" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="C" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="D" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Orther" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SchoolLearning" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsMatch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Reason1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ResultR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResultE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNganh" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="Tester_Survey_Answer" Member="Survey_Answers" ThisKey="Id" OtherKey="TesterId" Type="Survey_Answer" />
+      <Association Name="Tester_PointAverage" Member="PointAverages" ThisKey="Id" OtherKey="TesterId" Type="PointAverage" />
     </Type>
   </Table>
 </Database>

@@ -26,13 +26,107 @@ namespace LinqToExcel
     //    }
     //}
 
+    [ExcelSheet(Name = "Chi tiet Nganh")]
+    public class ChiTietNganh : System.ComponentModel.INotifyPropertyChanged
+    {
+
+        private string tennganh;
+        private string manganh;
+     
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public ChiTietNganh()
+        {
+          
+        }
+        protected virtual void SendPropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+
+
+        [ExcelColumn(Name = "Mã ngành", Storage = "manganh")]
+        public string MaNganh
+        {
+            get { return this.manganh; }
+            set
+            {
+                manganh = value;
+                SendPropertyChanged("MaNganh");
+            }
+        }
+        [ExcelColumn(Name = "Tên ngành", Storage = "tennganh")]
+        public string TenNganh
+        {
+            get { return this.tennganh; }
+            set
+            {
+                tennganh = value;
+                SendPropertyChanged("TenNganh");
+            }
+        }
+       
+    }
+
+    [ExcelSheet(Name = "Nhom_Nganh")]
+    public class Nhom_Nganh : System.ComponentModel.INotifyPropertyChanged
+    {
+
+        private string tennhom;
+        private string manhom;
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public Nhom_Nganh()
+        {
+           
+        }
+        protected virtual void SendPropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+     
+
+
+        [ExcelColumn(Name = "Mã nhóm ngành", Storage = "manhom")]
+        public string MaNhom
+        {
+            get { return this.manhom; }
+            set
+            {
+                manhom = value;
+                SendPropertyChanged("MaNhom");
+            }
+        }
+        [ExcelColumn(Name = "Tên nhóm ngành", Storage = "tennhom")]
+        public string TenNhom
+        {
+            get { return this.tennhom; }
+            set
+            {
+                tennhom = value;
+                SendPropertyChanged("TenNhom");
+            }
+        }
+
+    }
+
     [ExcelSheet(Name = "DHCD")]
     public class TruongDHCD : System.ComponentModel.INotifyPropertyChanged
     {
-      
+
         private string tentruong;
         private string matruong;
-     
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         public TruongDHCD()
         {
@@ -50,7 +144,7 @@ namespace LinqToExcel
         [ExcelColumn(Name = "TT", Storage = "stt")]
         public string STT { get; set; }
 
-      
+
         [ExcelColumn(Name = "Mã trường", Storage = "matruong")]
         public string MaTruong
         {
@@ -71,8 +165,9 @@ namespace LinqToExcel
                 SendPropertyChanged("TenTruong");
             }
         }
-       
+
     }
+
     [ExcelSheet(Name = "Truong THPT")]
     public class THPT : System.ComponentModel.INotifyPropertyChanged
     {

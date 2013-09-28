@@ -15,6 +15,7 @@ using KhaoSatHSSV.Classes;
 using KhaoSatHSSV.Classes.DB;
 using LinqToExcel;
 using KhoiThi = LinqToExcel.KhoiThi;
+using Nhom_Nganh = LinqToExcel.Nhom_Nganh;
 using Province = LinqToExcel.Province;
 
 namespace KhaoSatHSSV
@@ -26,9 +27,9 @@ namespace KhaoSatHSSV
         {
            
             
-            string filename = @"C:\Users\user\Downloads\Thong tin truong Tinh - THPT.xlsx";
+            //string filename = @"C:\Users\user\Downloads\Thong tin truong Tinh - THPT.xlsx";
 
-            ExcelProvider provider = ExcelProvider.Create(filename);
+            //ExcelProvider provider = ExcelProvider.Create(filename);
             //foreach (Province per in (from p in provider.GetSheet<Province>() select p))
             //{
             //    if (!string.IsNullOrEmpty(per.Tinh))
@@ -98,11 +99,52 @@ namespace KhaoSatHSSV
             //        db.SubmitChanges();
             //    }
             //}
+            Import();
         }
-        public override void Dispose()
+       
+        private void Import()
         {
-            base.Dispose();
-           // db.Dispose();
+            string filename = @"C:\Users\user\Downloads\Register.xlsx";
+
+            ExcelProvider provider = ExcelProvider.Create(filename);
+            var list = (from p in provider.GetSheet<ChiTietNganh>() select p);
+            //Response.Write(list.Count());
+            //Response.End();
+            foreach (ChiTietNganh per in list)
+            {
+                if (!string.IsNullOrEmpty(per.MaNganh))
+                {
+                    Response.Write(string.Format("{0}=>{1}<br>", per.TenNganh, per.MaNganh.Substring(0,8)));
+                    var group = new Classes.DB.Nganh()
+                    {
+                        Ma = per.MaNganh,
+                        TenNganh = per.TenNganh
+                    };
+                    db.Nganhs.InsertOnSubmit(group);
+                    db.SubmitChanges();
+                    //var nhomnganh =
+                    //    (from n in db.NhomNganhs where n.Ma.Trim() == per.MaNganh.Trim().Substring(0, 8) select n).
+                    //        FirstOrDefault();
+                    //if(nhomnganh!=null)
+                    //{
+                    //    var group_nganh = new Classes.DB.Nhom_Nganh()
+                    //    {
+                    //        MaNganh = group.Id,
+                    //        MaNhomNganh = nhomnganh.Id
+                    //    };
+                    //    db.Nhom_Nganhs.InsertOnSubmit(group_nganh);
+                    //    db.SubmitChanges();
+                    //}
+
+                    //var group = new Classes.DB.NhomNganh()
+                    //{
+                    //    Ma= per.MaNhom,
+                    //    TenNhom = per.TenNhom
+                    //};
+                    //db.NhomNganhs.InsertOnSubmit(group);
+                    //db.SubmitChanges();
+                }
+            }
         }
     }
 }
