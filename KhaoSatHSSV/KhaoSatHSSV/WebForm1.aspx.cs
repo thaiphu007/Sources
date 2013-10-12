@@ -104,28 +104,45 @@ namespace KhaoSatHSSV
        
         private void Import()
         {
-            string filename = @"C:\Users\user\Downloads\Register.xlsx";
+            string filename = @"C:\Users\user\Downloads\Linh vuc nghe nghiep -Change-- Nhom nganh_OK (1).xlsx";
 
             ExcelProvider provider = ExcelProvider.Create(filename);
-            var list = (from p in provider.GetSheet<ChiTietNganh>() select p);
+            var list = (from p in provider.GetSheet<Nhom_Nganh>() select p);
             //Response.Write(list.Count());
             //Response.End();
-            foreach (ChiTietNganh per in list)
+            string matruong = string.Empty;
+            foreach (Nhom_Nganh per in list)
             {
-                if (!string.IsNullOrEmpty(per.MaNganh))
+                if (!string.IsNullOrEmpty(per.MaNhom))
                 {
-                    Response.Write(string.Format("{0}=>{1}<br>", per.TenNganh, per.MaNganh.Substring(0,8)));
-                    var group = new Classes.DB.Nganh()
-                    {
-                        Ma = per.MaNganh,
-                        TenNganh = per.TenNganh
-                    };
-                    db.Nganhs.InsertOnSubmit(group);
-                    db.SubmitChanges();
+                    //Response.Write(string.Format("{9}=>{0}=>{1}=>{2}=>{3}=>{4}=>{5}=>{6}=>{7}=>{8}<br>", per.TenTruong, per.DiaChi, per.WEBSITE, per.MaTruong, per.MaNganh, per.TenNGanh, per.KhoiThi, per.LoaiTruong, per.GhiChu, matruong));
+
+
+                    //var dhnganh = new Classes.DB.DHCD_Nganh()
+                    //{
+
+                    //    MaTruong = matruong,
+                    //    MaNganh = per.MaNganh,
+                    //    KhoiThi = per.KhoiThi ?? string.Empty,
+                    //    TuyenSinh = true,
+                    //    NamTuyenSinh = DateTime.Now.Year.ToString()
+                    //};
+                    //db.DHCD_Nganhs.InsertOnSubmit(dhnganh);
+                    //db.SubmitChanges();
+
+                    //Response.Write(string.Format("{0}=>{1}<br/>",per.MaNganh,per.TenNganh));
+
+                    //var group = new Classes.DB.Nganh()
+                    //{
+                    //    Ma = per.MaNganh.Trim(),
+                    //    TenNganh = per.TenNganh.Trim()
+                    //};
+                    //db.Nganhs.InsertOnSubmit(group);
+                    //db.SubmitChanges();
                     //var nhomnganh =
                     //    (from n in db.NhomNganhs where n.Ma.Trim() == per.MaNganh.Trim().Substring(0, 8) select n).
                     //        FirstOrDefault();
-                    //if(nhomnganh!=null)
+                    //if (nhomnganh != null)
                     //{
                     //    var group_nganh = new Classes.DB.Nhom_Nganh()
                     //    {
@@ -136,14 +153,34 @@ namespace KhaoSatHSSV
                     //    db.SubmitChanges();
                     //}
 
-                    //var group = new Classes.DB.NhomNganh()
-                    //{
-                    //    Ma= per.MaNhom,
-                    //    TenNhom = per.TenNhom
-                    //};
-                    //db.NhomNganhs.InsertOnSubmit(group);
-                    //db.SubmitChanges();
+                    var group = new Classes.DB.NhomNganh()
+                    {
+                        Ma = per.MaNhom,
+                        TenNhom = per.TenNhom
+                    };
+                    db.NhomNganhs.InsertOnSubmit(group);
+                    db.SubmitChanges();
                 }
+                //else if (!string.IsNullOrEmpty(per.MaTruong))
+                //{
+
+                //    Response.Write(string.Format("{0}=>{1}=>{2}=>{3}=>{4}=>{5}=>{6}=>{7}=>{8}<br>", per.TenTruong, per.DiaChi, per.WEBSITE, per.MaTruong, per.MaNganh, per.TenNGanh, per.KhoiThi, per.LoaiTruong, per.GhiChu));
+                  
+                //    var college = new Classes.DB.College()
+                //    {
+                //        TenTruong = per.TenTruong,
+                //        MaTruong = per.MaTruong,
+                //        DiaChi = per.DiaChi??string.Empty,
+                //        WebSite = per.WEBSITE??string.Empty,
+                //        GhiChu = per.GhiChu??string.Empty,
+                //        LoaiTruong = per.LoaiTruong!=null && per.LoaiTruong.Trim()=="CL"?1:0,
+                //        CapBac = 2,
+                //        HienThi = true
+                //    };
+                //    db.Colleges.InsertOnSubmit(college);
+                //    db.SubmitChanges();
+                //    matruong = per.MaTruong;
+                //}
             }
         }
     }

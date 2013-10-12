@@ -39,16 +39,30 @@ namespace KhaoSatHSSV.Control
                     if (ucChooseLevel != null&&hdQuestionId!=null)
                     {
                         int point = ucChooseLevel.GetPoint;
-                        var answer = new Survey_Answer
-                                         {
-                                             ChooseLevel = point,
-                                             QuestionId = int.Parse(hdQuestionId.Value)
-
-                                         };
                         if (Session["TesterId"] != null)
-                            answer.TesterId = int.Parse(Session["TesterId"].ToString());
-                        db.Survey_Answers.InsertOnSubmit(answer);
-                        totalPoint += point;
+                        {
+                            var answer = new Survey_Answer
+                                             {
+                                                 ChooseLevel = point,
+                                                 QuestionId = int.Parse(hdQuestionId.Value)
+
+                                             };
+                          
+                            if (Session["TesterId"] != null)
+                                answer.TesterId = int.Parse(Session["TesterId"].ToString());
+                            db.Survey_Answers.InsertOnSubmit(answer);
+                        }
+                        if (Session["SVID"] != null)
+                        {
+                            var sv = new KhaoSat_SinhVien()
+                            {
+                                ChooseLevel = point,
+                                QuestionId = int.Parse(hdQuestionId.Value)
+                            };
+                            db.KhaoSat_SinhViens.InsertOnSubmit(sv);
+                        }
+                      db.SubmitChanges();
+                      totalPoint += point;
                     }
                 }
             }

@@ -4,41 +4,42 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table width="95%" cellpadding="3" cellspacing="0" border="1">
         <tr>
-            <td colspan="7" align="center">Phiếu Đăng Ký</td>
+            <td colspan="7" align="center"><strong>Phiếu Đăng Ký</strong></td>
         </tr>
         <tr >
-            <td style="width: 120px">Tên đăng nhập:</td>
+            <td style="width: 130px">Tên đăng nhập: (<span style="color: red">*</span>)</td>
             <td style="width: 200px">
                 <asp:TextBox ID="txtUser" Width="180px" MaxLength="50" runat="server"></asp:TextBox></td>
-            <td style="width: 120px">Mật Khẩu:</td>
+            <td style="width: 120px">Mật Khẩu: (<span style="color: red">*</span>)</td>
             <td style="width: 200px"><asp:TextBox ID="txtPass" Width="180px" MaxLength="50" TextMode="Password" runat="server"></asp:TextBox></td>
-             <td style="width: 120px">Xác nhận lại:</td>
+             <td style="width: 120px">Xác nhận lại: (<span style="color: red">*</span>)</td>
             <td style="width: 200px" colspan="2"><asp:TextBox ID="txtConfirm" Width="180px" MaxLength="50" TextMode="Password" runat="server"></asp:TextBox></td>
         </tr>
          <tr >
-            <td style="width: 120px">Họ tên:</td>
+            <td style="width: 130px">Họ tên: (<span style="color: red">*</span>)</td>
             <td style="width: 200px">
                 <asp:TextBox ID="txtHoTen" Width="180px" MaxLength="50" runat="server"></asp:TextBox></td>
             <td style="width: 120px">Phái:</td>
             <td style="width: 200px">  <asp:RadioButton ID="radNam" runat="server" GroupName="phai" Checked="True" Text="Nam" />
             <asp:RadioButton ID="radNu" runat="server" GroupName="phai" Text="Nữ" /></td>
-             <td style="width: 120px">Ngày sinh:</td>
+             <td style="width: 120px">Ngày sinh: (<span style="color: red">*</span>)</td>
             <td style="width: 200px" colspan="2"><telerik:RadDatePicker ID="txtBirthDate" runat="server" Skin="Default" Width="100px">
                 <DateInput ID="DateInput1" DateFormat="dd/MM/yyyy" runat="server">
                 </DateInput>
             </telerik:RadDatePicker></td>
         </tr>
          <tr >
-            <td style="width: 120px">Địa chỉ:</td>
+            <td style="width: 130px">Địa chỉ:</td>
             <td style="width: 200px">
                 <asp:TextBox ID="txtAddress" Width="180px" MaxLength="50" runat="server"></asp:TextBox></td>
             <td style="width: 120px">Nơi sinh: </td>
-            <td style="width: 200px"> <asp:TextBox ID="txtNoiSinh" Width="180px" MaxLength="50" runat="server"></asp:TextBox></td>
+            <td style="width: 200px">  <asp:DropDownList ID="ddlWhereBirth" runat="server" Width="185px">
+            </asp:DropDownList></td>
              <td style="width: 120px">Điện thoại:</td>
             <td style="width: 200px" colspan="2"><asp:TextBox ID="txtDienThoai" Width="180px" MaxLength="20" runat="server"></asp:TextBox></td>
         </tr>
         <tr >
-            <td style="width: 120px">Học tại tỉnh:</td>
+            <td style="width: 130px">Học tại tỉnh:</td>
             <td style="width: 200px">
                  <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
@@ -59,18 +60,18 @@
                     </Triggers>
                 </asp:UpdatePanel>
             </td>
-             <td style="width: 120px">Email:</td>
+             <td style="width: 120px">Email: (<span style="color: red">*</span>)</td>
             <td style="width: 200px" colspan="2"><asp:TextBox ID="txtEmail" Width="180px" MaxLength="20" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
             <td colspan="7" align="center">
-                Hãy chọn nhóm ngành bạn dự định học:
+             <strong>   Hãy chọn nhóm ngành bạn dự định học:</strong>
             </td>
         </tr>
         <tr >
             <td colspan="2" align="right">Nhóm ngành 1:</td>
             <td colspan="5">
-                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                 <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                         <ContentTemplate><asp:DropDownList ID="ddlNhomNganh1" runat="server" Width="470px"  AutoPostBack="True" OnSelectedIndexChanged="ddl_NhomNganh1_selectedChanged">
             </asp:DropDownList>
             </ContentTemplate>
@@ -78,8 +79,8 @@
             </td>
         </tr>
         <tr >
-            <td colspan="2" align="right">Ngành 1:</td>
-            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+            <td colspan="2" align="right"><strong>Ngành 1:</strong></td>
+            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
                         <ContentTemplate><asp:DropDownList ID="ddlNganh1" runat="server" Width="470px">
             </asp:DropDownList>   </ContentTemplate>
               <Triggers>
@@ -89,14 +90,14 @@
         </tr>
         <tr >
             <td colspan="2" align="right">Nhóm ngành 2:</td>
-            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
                         <ContentTemplate><asp:DropDownList ID="ddlNhomNganh2" runat="server" Width="470px"  AutoPostBack="True" OnSelectedIndexChanged="ddl_NhomNganh2_selectedChanged">
             </asp:DropDownList>   </ContentTemplate>
                     </asp:UpdatePanel></td>
         </tr>
         <tr >
-            <td colspan="2" align="right">Ngành 2:</td>
-            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+            <td colspan="2" align="right"><strong>Ngành 2:</strong></td>
+            <td colspan="5">    <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
                         <ContentTemplate><asp:DropDownList ID="ddlNganh2" runat="server" Width="470px">
             </asp:DropDownList>   </ContentTemplate> <Triggers>
                         <asp:AsyncPostBackTrigger ControlID="ddlNhomNganh2" EventName="SelectedIndexChanged" />
@@ -105,7 +106,7 @@
         </tr>
          <tr>
             <td colspan="7" align="center">
-              Chọn nhóm khả năng, sở thích phù hợp nhất với bạn (chọn ít nhất 1 hoặc 2 nhóm)
+             <strong> Chọn nhóm khả năng, sở thích phù hợp nhất với bạn (chọn ít nhất 1 hoặc 2 nhóm)</strong>
             </td>
         </tr>
          <tr>
@@ -115,7 +116,7 @@ thích làm các công việc ngoài trời.
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom1" runat="server" />
+                <asp:CheckBox ID="chkNhomR" runat="server" />
                 </td>
         </tr>
         <tr>
@@ -124,7 +125,7 @@ thích làm các công việc ngoài trời.
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom2" runat="server" />
+                <asp:CheckBox ID="chkNhomI" runat="server" />
                 </td>
         </tr>
         <tr>
@@ -134,7 +135,7 @@ thích làm việc trong các môi trường mang tính ngẫu hứng, không kh
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom3" runat="server" />
+                <asp:CheckBox ID="chkNhomA" runat="server" />
                 </td>
         </tr>
         <tr>
@@ -143,7 +144,7 @@ thích làm việc trong các môi trường mang tính ngẫu hứng, không kh
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom4" runat="server" />
+                <asp:CheckBox ID="chkNhomS" runat="server" />
                 </td>
         </tr>
         <tr>
@@ -152,7 +153,7 @@ thích làm việc trong các môi trường mang tính ngẫu hứng, không kh
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom5" runat="server" />
+                <asp:CheckBox ID="chkNhomE" runat="server" />
                 </td>
         </tr>
         <tr>
@@ -161,14 +162,16 @@ thích làm việc trong các môi trường mang tính ngẫu hứng, không kh
 
             </td>
             <td style="width: 50px" align="center">
-                <asp:CheckBox ID="chkNhom6" runat="server" />
+                <asp:CheckBox ID="chkNhomC" runat="server" />
                 </td>
         </tr>
 
         
         <tr>
             <td colspan="7" align="center">
-                <asp:Button ID="btnDangKy" runat="server" Text="Đăng Ký" /></td>
+                <asp:Button ID="btnDangKy" runat="server" Text="Đăng Ký" OnClick="btnDangKy_Click" />
+                <asp:Label ID="lblError" ForeColor="red" runat="server" Text=""></asp:Label>
+             </td>
         </tr>
     </table>
 </asp:Content>

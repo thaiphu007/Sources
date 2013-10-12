@@ -15,14 +15,16 @@ namespace KhaoSatHSSV
                 LoadData();
                 ddlProvince.SelectedIndex = 0;
                 ddlProvince_SelectedChanged(null,null);
+                ddlDangHoc.SelectedIndex = 0;
+                ddlDangHoc_SelectedChanged(null, null);
             }
         }
 
         protected void btn_check(object sender, EventArgs e)
         {
-          //save tester
+            //save tester
             if(!CheckValid()) return;
-            int id = 0;
+            int id;
             using (var db=new KHAOSATDataContext())
             {
                 var info = new Tester
@@ -47,40 +49,41 @@ namespace KhaoSatHSSV
                                    Orther = chkBlockOrther.Checked?txtBlockOrther.Text:string.Empty,
                                    SchoolLearning = ddlDangHoc.Text,
                                    IsMatch = radMatch.Checked,
-                                   Reason1 = txtReason1.Text
+                                   Reason1 = txtReason1.Text,
+                                   MaNganh = ddlNganhHoc.SelectedValue
                                };
                 db.Testers.InsertOnSubmit(info);
-                Session["TesterId"] = info.Id;
                 db.SubmitChanges();
+                Session["TesterId"] = info.Id;
                 //save answer
                 ucGroup1.SetPoint();
-                ucGroup2.SetPoint();
-                ucGroup3.SetPoint();
-                ucGroup4.SetPoint();
+                //ucGroup2.SetPoint();
+                //ucGroup3.SetPoint();
+               // ucGroup4.SetPoint();
                 //save average
-                int r=0;
-                int i=0;
-                int a=0;
-                int _e=0;
-                int c=0;
-                int s=0;
-                GetTotalGroupPoint(ref r,ref  i,ref a,ref _e,ref c,ref s);
-                db.PointAverages.InsertOnSubmit(GetInfo(txtToan10, txtToan11, txtToan12, info.Id, SubjectName.Toan));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtVatLy10, txtVatLy11, txtVatLy12, info.Id, SubjectName.Ly));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtHoaHoc10, txtHoaHoc11, txtHoaHoc12, info.Id, SubjectName.Hoa));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtVan10, txtVan11, txtVan12, info.Id, SubjectName.Van));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtLichSu10, txtLichSu11, txtLichSu12, info.Id, SubjectName.Su));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtDiaLy10, txtDiaLy11, txtDiaLy12, info.Id, SubjectName.Dia));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtTiengAnh10, txtTiengAnh11, txtTiengAnh12, info.Id, SubjectName.Anh));
-                db.PointAverages.InsertOnSubmit(GetInfo(txtSinh10, txtSinh11, txtSinh12, info.Id, SubjectName.Sinh));
-             
+                //int r=0;
+                //int i=0;
+                //int a=0;
+                //int _e=0;
+                //int c=0;
+                //int s=0;
+                //GetTotalGroupPoint(ref r,ref  i,ref a,ref _e,ref c,ref s);
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
+                db.PointAverages.InsertOnSubmit(GetInfo());
 
-                info.ResultA = a;
-                info.ResultR = r;
-                info.ResultC = c;
-                info.ResultI = i;
-                info.ResultS = s;
-                info.ResultE = _e;
+
+                info.ResultA = ucGroup1.GroupA;
+                info.ResultR = ucGroup1.GroupR;
+                info.ResultC = ucGroup1.GroupC;
+                info.ResultI = ucGroup1.GroupI;
+                info.ResultS = ucGroup1.GroupS;
+                info.ResultE = ucGroup1.GroupE;
                 db.SubmitChanges();
                 id = info.Id;
             }
@@ -97,6 +100,7 @@ namespace KhaoSatHSSV
                 ddlProvince.DataTextField = "ProvinceName";
                 ddlProvince.DataValueField= "Code";
                 ddlProvince.DataBind();
+
                 ddlWhereBirth.DataSource = db.Provinces;
                 ddlWhereBirth.DataTextField = "ProvinceName";
                 ddlWhereBirth.DataValueField = "Code";
@@ -111,8 +115,18 @@ namespace KhaoSatHSSV
                 ddlDangHoc.DataTextField = "TenTruong";
                 ddlDangHoc.DataValueField = "MaTruong";
                 ddlDangHoc.DataBind();
+
+                ddlNganhHoc.DataSource = db.Nganhs;
+                ddlNganhHoc.DataTextField = "TenNganh";
+                ddlNganhHoc.DataValueField = "Ma";
+                ddlNganhHoc.DataBind();
+                
+
+           
+
             }
         }
+
         private PointAverage GetInfo(TextBox txt10,TextBox txt11,TextBox txt12,int testerId,SubjectName sbj)
         {
             var average = new PointAverage
@@ -121,24 +135,37 @@ namespace KhaoSatHSSV
                 Eleven = Commons.TryParseFloat(txt11.Text),
                 Twelve = Commons.TryParseFloat(txt12.Text),
                 SubjectId = (int)sbj,
-                Block =
-                    string.Format("{0};{1};{2},{3};{4};{5}", chkA.Checked ? "1" : "0",
-                                  chkA1.Checked ? "1" : "0", chkB.Checked ? "1" : "0",
-                                  chkC.Checked ? "1" : "0", chkD.Checked ? "1" : "0",
-                                  chkOrders.Checked ? txtOther.Text : ""),
+                Block = string.Format("{0};{1};{2},{3};{4};{5}", "0", "0", "0", "0", "0", ""),
                 TesterId = testerId
             };
             return average;
         }
+
+        private PointAverage GetInfo()
+        {
+            var average = new PointAverage
+            {
+                Ten = 0,
+                Eleven = 0,
+                Twelve = 0,
+                SubjectId = null,
+                Block =
+                    string.Format("{0};{1};{2},{3};{4};{5}",  "0","0",  "0","0",  "0",""),
+                TesterId = null
+            };
+            return average;
+        }
+
         private void GetTotalGroupPoint(ref int r,ref  int i, ref int a,ref  int e,ref  int c, ref int s)
         {
-             r =ucGroup1.GroupR + ucGroup2.GroupR + ucGroup3.GroupR + ucGroup4.GroupR;
-             i = ucGroup1.GroupI + ucGroup2.GroupI + ucGroup3.GroupI + ucGroup4.GroupI;
-             a = ucGroup1.GroupA  + ucGroup2.GroupA + ucGroup3.GroupA + ucGroup4.GroupA;
-             e = ucGroup1.GroupE + ucGroup2.GroupE + ucGroup3.GroupE + ucGroup4.GroupE;
-             c = ucGroup1.GroupC + ucGroup2.GroupC + ucGroup3.GroupC + ucGroup4.GroupC;
-             s = ucGroup1.GroupS + ucGroup2.GroupS + ucGroup3.GroupS + ucGroup4.GroupS;
+            r = ucGroup1.GroupR;// +ucGroup2.GroupR + ucGroup3.GroupR + ucGroup4.GroupR;
+            i = ucGroup1.GroupI;// +ucGroup2.GroupI + ucGroup3.GroupI + ucGroup4.GroupI;
+            a = ucGroup1.GroupA;// +ucGroup2.GroupA + ucGroup3.GroupA + ucGroup4.GroupA;
+            e = ucGroup1.GroupE;// +ucGroup2.GroupE + ucGroup3.GroupE + ucGroup4.GroupE;
+            c = ucGroup1.GroupC;// +ucGroup2.GroupC + ucGroup3.GroupC + ucGroup4.GroupC;
+            s = ucGroup1.GroupS;// +ucGroup2.GroupS + ucGroup3.GroupS + ucGroup4.GroupS;
         }
+
         private bool CheckValid()
         {
             if (string.IsNullOrEmpty(txtFullName.Text.Trim()))
@@ -154,6 +181,7 @@ namespace KhaoSatHSSV
             }
             return true;
         }
+
         private void ShowMessage(string message)
         {
             Page.ClientScript.RegisterClientScriptBlock(GetType(), string.Format("message_{0}", DateTime.Now.Ticks.ToString()), string.Format("<script type='text/javascript'> $(document).ready(function(){{alert('{0}');showSurvey('survey5')}});</script>", message));
@@ -169,6 +197,20 @@ namespace KhaoSatHSSV
                 ddlTruong.DataTextField = "TenTruong";
                 ddlTruong.DataValueField = "MaTruong";
                 ddlTruong.DataBind();
+            }
+        }
+
+        protected void ddlDangHoc_SelectedChanged(object sender, EventArgs e)
+        {
+            using (var db = new KHAOSATDataContext())
+            {
+                var list =
+                    (from t in db.Nganhs join dn in db.DHCD_Nganhs on t.Ma equals dn.MaNganh 
+                     where dn.MaTruong==ddlDangHoc.SelectedValue select t);
+                ddlNganhHoc.DataSource = list;
+                ddlNganhHoc.DataTextField = "TenNganh";
+                ddlNganhHoc.DataValueField = "Ma";
+                ddlNganhHoc.DataBind();
             }
         }
     }

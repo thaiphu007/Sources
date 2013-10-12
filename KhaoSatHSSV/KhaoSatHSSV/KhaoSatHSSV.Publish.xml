@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="E:\Deploy\lifeyou\publish" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Web.config" publishTime="09/25/2013 22:37:29" />
+    <file relUrl="Web.config" publishTime="10/12/2013 14:01:31" />
     <file relUrl="WebForm1.aspx" publishTime="09/22/2013 13:32:07" />
     <file relUrl="bin/Telerik.Web.UI.dll" publishTime="06/09/2013 17:16:09" />
     <file relUrl="js/jquery-1.8.2.js" publishTime="09/18/2013 16:54:24" />
     <file relUrl="Control/ucChooseLevel.ascx" publishTime="09/18/2013 17:01:45" />
+    <file relUrl="Register.aspx" publishTime="10/10/2013 20:06:20" />
     <file relUrl="Control/ucQuestion.ascx" publishTime="09/19/2013 19:36:24" />
-    <file relUrl="ViewResult.aspx" publishTime="09/19/2013 20:15:52" />
-    <file relUrl="Master/Root.Master" publishTime="09/19/2013 20:16:43" />
+    <file relUrl="Survey.aspx" publishTime="10/12/2013 14:07:24" />
+    <file relUrl="ViewResult.aspx" publishTime="10/12/2013 14:05:57" />
+    <file relUrl="Master/Root.Master" publishTime="09/27/2013 18:19:12" />
     <file relUrl="Control/ucGroup.ascx" publishTime="09/18/2013 18:50:40" />
-    <file relUrl="bin/KhaoSatHSSV.dll" publishTime="09/25/2013 22:37:29" />
-    <file relUrl="bin/KhaoSatHSSV.pdb" publishTime="09/25/2013 22:37:29" />
-    <file relUrl="Default.aspx" publishTime="09/25/2013 21:54:07" />
+    <file relUrl="bin/KhaoSatHSSV.dll" publishTime="10/12/2013 14:26:50" />
+    <file relUrl="bin/KhaoSatHSSV.pdb" publishTime="10/12/2013 14:26:50" />
+    <file relUrl="Default.aspx" publishTime="10/12/2013 13:53:05" />
     <file relUrl="css/main.css" publishTime="09/19/2013 20:01:19" />
   </publishProfile>
 </publishData>

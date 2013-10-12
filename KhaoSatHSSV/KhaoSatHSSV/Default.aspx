@@ -2,28 +2,6 @@
 <%@ Register src="Control/ucGroup.ascx" tagname="ucGroup" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        HideSurvey();
-        $("#survey1").show();
-    });
-
-    function showSurvey(id) {
-        HideSurvey();
-        if (id == "survey5")
-            $("#survey6").show();
-        $("#"+id).show();
-        
-    }
-    function HideSurvey() {
-        $("#survey1").hide();
-        $("#survey2").hide();
-        $("#survey3").hide();
-        $("#survey4").hide();
-        $("#survey5").hide();
-        $("#survey6").hide();
-    }
-</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -134,10 +112,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Trường Đang Học</td>
         <td>
-            <asp:DropDownList ID="ddlDangHoc" runat="server" Width="190px">
-            </asp:DropDownList>
-            Ngành
-             <asp:DropDownList ID="ddlNganh" runat="server" Width="100px">
+            <asp:DropDownList ID="ddlDangHoc" runat="server" Width="335px" AutoPostBack="True" OnSelectedIndexChanged="ddlDangHoc_SelectedChanged">
             </asp:DropDownList>
         </td>
         <td>
@@ -148,6 +123,16 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lý Do:<asp:TextBox ID="txtReason1" 
                 runat="server" Width="205px" MaxLength="250" ></asp:TextBox>
         </td>
+    </tr>
+    <tr>
+        <td>
+            Ngành Đang Học</td>
+        <td colspan="5">
+            <asp:DropDownList ID="ddlNganhHoc" runat="server" Width="500px">
+            </asp:DropDownList>
+           
+        </td>
+      
     </tr>
 </table>
 <div class="ct_item">
@@ -239,164 +224,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
     <uc1:ucGroup ID="ucGroup1" runat="server" QuestionType="1" />
     </div>
 </div>
-<input value="Next" type="button" id="btnext" class="btnNext" onclick="showSurvey('survey2')" />
+ <asp:Button ID="Button9" runat="server" Text="Next" CssClass="btnNext" OnClick="btn_check" />
 </div>
-<div class="ct_subitem" id="survey2">
-    2. Bạn thích làm nghề gì? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
 
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup2" runat="server" QuestionType="2" />
-    </div>
-</div>
-<input value="Next" type="button" id="Button2" class="btnNext" onclick="showSurvey('survey3')" />
-<input value="Back" type="button" id="Button8" class="btnNext" onclick="showSurvey('survey1')" />
-</div>
-<div class="ct_subitem" id="survey3">
-    3. Bạn thường làm gì vào thời gian rảnh? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
-
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup4" runat="server" QuestionType="3" />
-    </div>
-</div>
-<input value="Next" type="button" id="Button3" class="btnNext" onclick="showSurvey('survey4')" />
-<input value="Back" type="button" id="Button7" class="btnNext" onclick="showSurvey('survey2')" />
-</div>
-<div class="ct_subitem" id="survey4">
-    4. Tính cách của bạn như thế nào? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
-
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup3" runat="server" QuestionType="4" />
-    </div>
-</div>
-<input value="Next" type="button" id="Button4" class="btnNext" onclick="showSurvey('survey5')" />
-<input value="Back" type="button" id="Button6" class="btnNext" onclick="showSurvey('survey3')" />
-</div>
-<div class="ct_item" id="survey5">
-    III. Đánh giá năng lực dựa vào kết quả học tập:
-</div>
-<div class="ct_subitem" id="survey6">
-   Bạn hãy chọn vào khối thi mà bạn đã tham gia vào kỳ thi tuyển sinh ĐH-CĐ và bạn căn cứ vào học bạ lớp 10, 11, 12 điền điểm trung bình vào bảng bên dưới
-   <p>
-   1.	Khối thi:  
-       <asp:CheckBox ID="chkA" runat="server" Text="A" /> -   <asp:CheckBox ID="chkA1" runat="server" Text="A1" />  -   <asp:CheckBox ID="chkB" runat="server" Text="B" />  -  <asp:CheckBox ID="chkC" runat="server" Text="C" /> -  <asp:CheckBox ID="chkD" runat="server" Text="D" />  -  <asp:CheckBox ID="chkOrders" runat="server"  />  
-       <asp:TextBox ID="txtOther" runat="server"></asp:TextBox>(năng khiếu)
-   </p>
-   <p>
-       2.	Điền điểm trung bình cả năm của lớp 10, 11, 12 vào các ô tương ứng. Nếu chưa có điểm của năm, lấy điểm trung bình của học kỳ trước đó. 
-			
-   </p>
-    <table cellpadding="3" cellspacing="0" class="tbl_Average">
-        <tr>
-            <td>
-                &nbsp;</td>
-            <td colspan="3">Điểm trung bình
-(căn cứ vào học bạ lớp 10, 11, 12)
-
-                </td>
-        </tr>
-        <tr>
-            <td>
-                Môn học</td>
-            <td>
-                Lớp 10</td>
-            <td>
-                Lớp 11</td>
-            <td>
-                Lớp 12</td>
-        </tr>
-        <tr>
-            <td>
-                Toán</td>
-            <td>
-                 <asp:TextBox ID="txtToan10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtToan11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtToan12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Vật Lý</td>
-            <td>
-                 <asp:TextBox ID="txtVatLy10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtVatLy11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtVatLy12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Hóa Học</td>
-             <td>
-                 <asp:TextBox ID="txtHoaHoc10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtHoaHoc11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtHoaHoc12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Văn</td>
-            <td>
-                 <asp:TextBox ID="txtVan10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtVan11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtVan12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Lịch Sử</td>
-            <td>
-                 <asp:TextBox ID="txtLichSu10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtLichSu11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtLichSu12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Địa Lý</td>
-             <td>
-                 <asp:TextBox ID="txtDiaLy10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtDiaLy11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtDiaLy12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-               Tiếng Anh</td>
-             <td>
-                 <asp:TextBox ID="txtTiengAnh10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtTiengAnh11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtTiengAnh12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Sinh</td>
-             <td>
-                 <asp:TextBox ID="txtSinh10" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                 <asp:TextBox ID="txtSinh11" runat="server" Text="0"></asp:TextBox></td>
-            <td>
-                <asp:TextBox ID="txtSinh12" runat="server" Text="0"></asp:TextBox>
-            </td>
-        </tr>
-    </table>
-     <asp:Button ID="Button9" runat="server" Text="Next" CssClass="btnNext" OnClick="btn_check" />
-    <input value="Back" type="button" id="Button5" class="btnNext" onclick="showSurvey('survey4')" />
-</div>
 </asp:Content>

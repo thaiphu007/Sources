@@ -85,13 +85,13 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// txtNoiSinh control.
+        /// ddlWhereBirth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNoiSinh;
+        protected global::System.Web.UI.WebControls.DropDownList ddlWhereBirth;
         
         /// <summary>
         /// txtDienThoai control.
@@ -220,58 +220,58 @@ namespace KhaoSatHSSV {
         protected global::System.Web.UI.WebControls.DropDownList ddlNganh2;
         
         /// <summary>
-        /// chkNhom1 control.
+        /// chkNhomR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom1;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomR;
         
         /// <summary>
-        /// chkNhom2 control.
+        /// chkNhomI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom2;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomI;
         
         /// <summary>
-        /// chkNhom3 control.
+        /// chkNhomA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom3;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomA;
         
         /// <summary>
-        /// chkNhom4 control.
+        /// chkNhomS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom4;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomS;
         
         /// <summary>
-        /// chkNhom5 control.
+        /// chkNhomE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom5;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomE;
         
         /// <summary>
-        /// chkNhom6 control.
+        /// chkNhomC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNhom6;
+        protected global::System.Web.UI.WebControls.CheckBox chkNhomC;
         
         /// <summary>
         /// btnDangKy control.
@@ -281,5 +281,14 @@ namespace KhaoSatHSSV {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDangKy;
+        
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

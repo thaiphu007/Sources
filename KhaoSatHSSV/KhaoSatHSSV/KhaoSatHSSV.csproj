@@ -63,6 +63,7 @@
     <Content Include="Default.aspx" />
     <Content Include="js\jquery-1.8.2.js" />
     <Content Include="Register.aspx" />
+    <Content Include="Survey.aspx" />
     <Content Include="ViewResult.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -125,6 +126,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Survey.aspx.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Survey.aspx.designer.cs">
+      <DependentUpon>Survey.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewResult.aspx.cs">
       <DependentUpon>ViewResult.aspx</DependentUpon>

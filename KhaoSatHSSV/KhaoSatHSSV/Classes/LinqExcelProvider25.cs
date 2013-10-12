@@ -26,17 +26,147 @@ namespace LinqToExcel
     //    }
     //}
 
+    [ExcelSheet(Name = "Cao dang")]
+    public class DHCD_Nganha : System.ComponentModel.INotifyPropertyChanged
+    {
+
+        private string tentruong;
+        private string matruong;
+        private string tennganh;
+        private string diachi;
+        private string Loaitruong;
+        private string website;
+        private string ghichu;
+        private string khoithi;
+        private string manganh;
+     
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public DHCD_Nganha()
+        {
+          
+        }
+        protected virtual void SendPropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+
+
+        [ExcelColumn(Name = "MÃ NGÀNH", Storage = "manganh")]
+        public string MaNganh
+        {
+            get { return this.manganh; }
+            set
+            {
+                manganh = value;
+                SendPropertyChanged("MaNganh");
+            }
+        }
+        [ExcelColumn(Name = "TÊN TRƯỜNG", Storage = "tentruong")]
+        public string TenTruong
+        {
+            get { return this.tentruong; }
+            set
+            {
+                tentruong = value;
+                SendPropertyChanged("TenTruong");
+            }
+        }
+        
+             [ExcelColumn(Name = "ĐỊA CHỈ", Storage = "diachi")]
+        public string DiaChi
+        {
+            get { return this.diachi; }
+            set
+            {
+                diachi = value;
+                SendPropertyChanged("DiaChi");
+            }
+        }
+           
+        [ExcelColumn(Name = "WEBSITE", Storage = "website")]
+        public string WEBSITE
+        {
+            get { return this.website; }
+            set
+            {
+                website = value;
+                SendPropertyChanged("WEBSITE");
+            }
+        }
+            
+        [ExcelColumn(Name = "MÃ TRƯỜNG", Storage = "matruong")]
+        public string MaTruong
+        {
+            get { return this.matruong; }
+            set
+            {
+                matruong = value;
+                SendPropertyChanged("MaTruong");
+            }
+        }
+
+         [ExcelColumn(Name = "TÊN NGÀNH", Storage = "tennganh")]
+        public string TenNGanh
+        {
+            get { return this.tennganh; }
+            set
+            {
+                tennganh = value;
+                SendPropertyChanged("TenNGanh");
+            }
+        }
+            
+        [ExcelColumn(Name = "KHỐI THI", Storage = "khoithi")]
+        public string KhoiThi
+        {
+            get { return this.khoithi; }
+            set
+            {
+                khoithi = value;
+                SendPropertyChanged("KhoiThi");
+            }
+        }
+
+        [ExcelColumn(Name = "LOẠI TRƯỜNG", Storage = "Loaitruong")]
+        public string LoaiTruong
+        {
+            get { return this.Loaitruong; }
+            set
+            {
+                Loaitruong = value;
+                SendPropertyChanged("LoaiTruong");
+            }
+        }
+        [ExcelColumn(Name = "GHI CHÚ", Storage = "ghichu")]
+        public string GhiChu
+        {
+            get { return this.ghichu; }
+            set
+            {
+                ghichu = value;
+                SendPropertyChanged("GhiChu");
+            }
+        }
+       
+    }
+
     [ExcelSheet(Name = "Chi tiet Nganh")]
     public class ChiTietNganh : System.ComponentModel.INotifyPropertyChanged
     {
 
         private string tennganh;
         private string manganh;
-     
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         public ChiTietNganh()
         {
-          
+
         }
         protected virtual void SendPropertyChanged(string propertyName)
         {
@@ -70,7 +200,7 @@ namespace LinqToExcel
                 SendPropertyChanged("TenNganh");
             }
         }
-       
+
     }
 
     [ExcelSheet(Name = "Nhom_Nganh")]
