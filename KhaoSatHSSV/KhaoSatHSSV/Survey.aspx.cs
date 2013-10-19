@@ -52,7 +52,7 @@ namespace KhaoSatHSSV
                 }
             }
 
-           // Response.Redirect(string.Format("/ViewResult.aspx?id={0}", id));
+            Response.Redirect(string.Format("/Results.aspx?id={0}", id));
 
         }
 

@@ -26,6 +26,54 @@ namespace LinqToExcel
     //    }
     //}
 
+
+    [ExcelSheet(Name = "John")]
+    public class GroupNganh : System.ComponentModel.INotifyPropertyChanged
+    {
+
+        private string manhom;
+        private string manganh;
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        public GroupNganh()
+        {
+
+        }
+        protected virtual void SendPropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+
+
+        [ExcelColumn(Name = "Mã ngành", Storage = "manganh")]
+        public string MaNganh
+        {
+            get { return this.manganh; }
+            set
+            {
+                manganh = value;
+                SendPropertyChanged("MaNganh");
+            }
+        }
+        [ExcelColumn(Name = "Mã nhóm", Storage = "manhom")]
+        public string MaNhom
+        {
+            get { return this.manhom; }
+            set
+            {
+                manhom = value;
+                SendPropertyChanged("MaNhom");
+            }
+        }
+
+    }
+
     [ExcelSheet(Name = "Cao dang")]
     public class DHCD_Nganha : System.ComponentModel.INotifyPropertyChanged
     {

@@ -102,21 +102,59 @@ namespace KhaoSatHSSV
             Import();
         }
        
+        private void InsertGroupNganh(int GroupId,string nganhs)
+        {
+            foreach (var item in nganhs.Split(';'))
+            {
+                if(!string.IsNullOrEmpty(item))
+                {
+                    var group = new Classes.DB.Groups_Nganh()
+                    {
+                        Manganh = item.Trim(),
+                        NhomId = GroupId
+                    };
+                    db.Groups_Nganhs.InsertOnSubmit(group);
+                  //  db.SubmitChanges();
+                }
+            }
+
+        }
         private void Import()
         {
-            string filename = @"C:\Users\user\Downloads\Linh vuc nghe nghiep -Change-- Nhom nganh_OK (1).xlsx";
+            string filename = @"C:\Users\user\Downloads\6 nhom lua chon.xlsx";
 
             ExcelProvider provider = ExcelProvider.Create(filename);
-            var list = (from p in provider.GetSheet<Nhom_Nganh>() select p);
+            var list = (from p in provider.GetSheet<GroupNganh>() select p);
             //Response.Write(list.Count());
             //Response.End();
             string matruong = string.Empty;
-            foreach (Nhom_Nganh per in list)
+            foreach (GroupNganh per in list)
             {
                 if (!string.IsNullOrEmpty(per.MaNhom))
                 {
                     //Response.Write(string.Format("{9}=>{0}=>{1}=>{2}=>{3}=>{4}=>{5}=>{6}=>{7}=>{8}<br>", per.TenTruong, per.DiaChi, per.WEBSITE, per.MaTruong, per.MaNganh, per.TenNGanh, per.KhoiThi, per.LoaiTruong, per.GhiChu, matruong));
+                    if (per.MaNhom == GroupName.A.ToString())
+                       InsertGroupNganh((int)GroupName.A,per.MaNganh);// Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
+                    else if (per.MaNhom == GroupName.C.ToString())
+                        InsertGroupNganh((int)GroupName.C, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
+                    else if (per.MaNhom == GroupName.E.ToString())
+                        InsertGroupNganh((int)GroupName.E, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
+                    else if (per.MaNhom == GroupName.I.ToString())
+                        InsertGroupNganh((int)GroupName.I, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
+                    else if (per.MaNhom == GroupName.R.ToString())
+                        InsertGroupNganh((int)GroupName.R, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
+                    else if (per.MaNhom == GroupName.S.ToString())
+                        InsertGroupNganh((int)GroupName.S, per.MaNganh);// Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
 
+
+                        db.SubmitChanges();
+                    //var group = new Classes.DB.NhomNganh()
+                    //{
+                    //    Ma = per.MaNhom,
+                    //    TenNhom = per.TenNhom
+                    //};
+                    //db.NhomNganhs.InsertOnSubmit(group);
+                    //db.SubmitChanges();
 
                     //var dhnganh = new Classes.DB.DHCD_Nganh()
                     //{
@@ -153,13 +191,13 @@ namespace KhaoSatHSSV
                     //    db.SubmitChanges();
                     //}
 
-                    var group = new Classes.DB.NhomNganh()
-                    {
-                        Ma = per.MaNhom,
-                        TenNhom = per.TenNhom
-                    };
-                    db.NhomNganhs.InsertOnSubmit(group);
-                    db.SubmitChanges();
+                    //var group = new Classes.DB.NhomNganh()
+                    //{
+                    //    Ma = per.MaNhom,
+                    //    TenNhom = per.TenNhom
+                    //};
+                    //db.NhomNganhs.InsertOnSubmit(group);
+                    //db.SubmitChanges();
                 }
                 //else if (!string.IsNullOrEmpty(per.MaTruong))
                 //{

@@ -52,12 +52,19 @@ namespace KhaoSatHSSV.Control
                                 answer.TesterId = int.Parse(Session["TesterId"].ToString());
                             db.Survey_Answers.InsertOnSubmit(answer);
                         }
-                        if (Session["SVID"] != null)
+                        if (Session["solan"]==null&& db.KhaoSat_SinhViens != null && db.KhaoSat_SinhViens.Any())
+                        {
+                            int Solan = (db.KhaoSat_SinhViens.Count(k => k.SinhVienId == (long)Session["SVID"])) / 126;
+                            Session["solan"] = Solan;
+                        }
+                        if (Session["SVID"] != null && Session["solan"]!=null)
                         {
                             var sv = new KhaoSat_SinhVien()
                             {
                                 ChooseLevel = point,
-                                QuestionId = int.Parse(hdQuestionId.Value)
+                                QuestionId = int.Parse(hdQuestionId.Value),
+                                SinhVienId = (long)Session["SVID"],
+                                SoLan =(int) Session["solan"]
                             };
                             db.KhaoSat_SinhViens.InsertOnSubmit(sv);
                         }

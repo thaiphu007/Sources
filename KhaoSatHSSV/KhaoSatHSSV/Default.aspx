@@ -93,7 +93,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
         <td>
             Điểm Thi ĐH, CĐ:</td>
         <td valign="middle">
-            <asp:TextBox ID="txtPointTest" runat="server" Width="20px" Text="0" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtPointTest" runat="server" Width="20px" Text="0" MaxLength="6"></asp:TextBox>
         &nbsp; Trường Dự Thi:<asp:DropDownList ID="ddlDuThi" runat="server" Width="204px">
             </asp:DropDownList>
         </td>

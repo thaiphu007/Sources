@@ -122,7 +122,7 @@ namespace KhaoSatHSSV
                                    MaNganh1 = ddlNganh1.SelectedValue,
                                    MaNhom2 = ddlNhomNganh2.SelectedValue,
                                    MaNganh2 = ddlNganh2.SelectedValue,
-                                   KhaNang = string.Format("{0};{1};{2};{3}:{4};{5}", chkNhomR.Checked ? 1 : 0, chkNhomI.Checked ? 1 : 0, chkNhomA.Checked ? 1 : 0, chkNhomS.Checked ? 1 : 0, chkNhomE.Checked ? 1 : 0, chkNhomC.Checked ? 1 : 0),
+                                   KhaNang = string.Format("{0};{1};{2};{3}:{4};{5}", chkNhomR.Checked ? 1 : 0, chkNhomI.Checked ? 2 : 0, chkNhomA.Checked ? 3 : 0, chkNhomS.Checked ? 4 : 0, chkNhomE.Checked ? 5 : 0, chkNhomC.Checked ? 6 : 0),
                                    CreateDate = DateTime.Now
                                };
                 //R:I:A:S:E:C
@@ -161,28 +161,40 @@ namespace KhaoSatHSSV
             }
             else if(txtBirthDate.SelectedDate==null)
             {
-                txtConfirm.Focus();
-                txtEmail.Text = "Nhập  ngày sinh !";
+                txtBirthDate.Focus();
+                lblError.Text = "Nhập  ngày sinh !";
                 result = false;
             }
             else if (DateTime.Now.Date.Year-txtBirthDate.SelectedDate.Value.Year<14){
-                txtConfirm.Focus();
-                txtEmail.Text = "Bạn chưa đủ tuổi.!";
+                txtBirthDate.Focus();
+                lblError.Text = "Bạn chưa đủ tuổi.!";
                 result = false;
             }
             else if (string.IsNullOrEmpty(txtEmail.Text.Trim())){
-                txtConfirm.Focus();
-                txtEmail.Text = "Nhập Email !";
+                txtEmail.Focus();
+                lblError.Text = "Nhập Email !";
                 result = false;
             }
             else if (!IsValidEmail(txtEmail.Text))
             {
-                txtConfirm.Focus();
-                txtEmail.Text = "Nhập  Email không đúng !";
+                txtEmail.Focus();
+                lblError.Text = "Nhập  Email không đúng !";
                 result = false;
             }
+            else  if(!IsExistEmailOrUserName(true))
+            {
+                txtUser.Text = "Tên đăng nhập  đã tồn tại vui lòng điền tên khác !";
+                result = false;
+            }
+            else if (!IsExistEmailOrUserName())
+            {
+                txtEmail.Text = "Email đã tồn tại vui lòng điền email khác !";
+                result = false;
+            }
+
             return result;
         }
+
         public bool IsValidEmail(string emailaddress)
         {
             try
@@ -194,6 +206,25 @@ namespace KhaoSatHSSV
             {
                 return false;
             }
+        }
+
+        public bool IsExistEmailOrUserName(bool isUserName=false)
+        {
+            bool IsExist;
+            using (var db=new KHAOSATDataContext())
+            {
+                var info = isUserName ? (from sv in db.SinhViens
+                                         where sv.TenDangNhap.ToLower().Equals(txtUser.Text.Trim().ToLower())
+                                         select sv).FirstOrDefault() : (from sv in db.SinhViens
+                                                                        where sv.Email.ToLower().Equals(txtEmail.Text.Trim().ToLower()) ||
+                                                                                                        sv.TenDangNhap.ToLower().Equals(
+                                                                                                            txtUser.Text.Trim().ToLower())
+                                                                        select sv).FirstOrDefault();
+               
+                   IsExist = info != null;
+               
+            }
+            return IsExist;
         }
 
         protected void btnDangKy_Click(object sender, EventArgs e)

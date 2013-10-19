@@ -27,6 +27,8 @@ namespace KhaoSatHSSV
             int id;
             using (var db=new KHAOSATDataContext())
             {
+                double point = 0;
+                double.TryParse(string.IsNullOrEmpty(txtPointTest.Text.Trim()) ? "0" : txtPointTest.Text.Trim(),out point);
                 var info = new Tester
                                {
                                    FullName = txtFullName.Text,
@@ -40,7 +42,7 @@ namespace KhaoSatHSSV
                                    Province = ddlProvince.Text,
                                    Department = txtDepartment.Text,
                                    Reason = txtReason.Text,
-                                   Scores = double.Parse(string.IsNullOrEmpty(txtPointTest.Text.Trim()) ? "0" : txtPointTest.Text.Trim()),
+                                   Scores = point,
                                    SchoolTest = ddlDuThi.Text,
                                    A = chkBlockA.Checked,
                                    B = chkBlockB.Checked,
@@ -173,12 +175,7 @@ namespace KhaoSatHSSV
                 ShowMessage("Nhập Họ tên");
                 return false;
             }
-            if (!string.IsNullOrEmpty(txtPointTest.Text.Trim()) && (txtPointTest.Text.Trim().Length>2|| Commons.TryParseFloat(txtPointTest.Text)>30))
-            {
-
-                ShowMessage("Điểm Thi ĐH, CĐ quá lớn.");
-                return false;
-            }
+            
             return true;
         }
 

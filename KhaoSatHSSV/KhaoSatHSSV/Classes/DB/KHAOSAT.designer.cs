@@ -69,12 +69,15 @@ namespace KhaoSatHSSV.Classes.DB
     partial void InsertDHCD_Nganh(DHCD_Nganh instance);
     partial void UpdateDHCD_Nganh(DHCD_Nganh instance);
     partial void DeleteDHCD_Nganh(DHCD_Nganh instance);
-    partial void InsertKhaoSat_SinhVien(KhaoSat_SinhVien instance);
-    partial void UpdateKhaoSat_SinhVien(KhaoSat_SinhVien instance);
-    partial void DeleteKhaoSat_SinhVien(KhaoSat_SinhVien instance);
     partial void InsertSinhVien(SinhVien instance);
     partial void UpdateSinhVien(SinhVien instance);
     partial void DeleteSinhVien(SinhVien instance);
+    partial void InsertGroups_Nganh(Groups_Nganh instance);
+    partial void UpdateGroups_Nganh(Groups_Nganh instance);
+    partial void DeleteGroups_Nganh(Groups_Nganh instance);
+    partial void InsertKhaoSat_SinhVien(KhaoSat_SinhVien instance);
+    partial void UpdateKhaoSat_SinhVien(KhaoSat_SinhVien instance);
+    partial void DeleteKhaoSat_SinhVien(KhaoSat_SinhVien instance);
     #endregion
 		
 		public KHAOSATDataContext() : 
@@ -211,6 +214,22 @@ namespace KhaoSatHSSV.Classes.DB
 			}
 		}
 		
+		public System.Data.Linq.Table<SinhVien> SinhViens
+		{
+			get
+			{
+				return this.GetTable<SinhVien>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Groups_Nganh> Groups_Nganhs
+		{
+			get
+			{
+				return this.GetTable<Groups_Nganh>();
+			}
+		}
+		
 		public System.Data.Linq.Table<KhaoSat_SinhVien> KhaoSat_SinhViens
 		{
 			get
@@ -219,12 +238,11 @@ namespace KhaoSatHSSV.Classes.DB
 			}
 		}
 		
-		public System.Data.Linq.Table<SinhVien> SinhViens
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Summary_ResultGroup")]
+		public ISingleResult<Summary_ResultGroupResult> Summary_ResultGroup([global::System.Data.Linq.Mapping.ParameterAttribute(Name="SinhVienId", DbType="BigInt")] System.Nullable<long> sinhVienId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SoLan", DbType="Int")] System.Nullable<int> soLan)
 		{
-			get
-			{
-				return this.GetTable<SinhVien>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sinhVienId, soLan);
+			return ((ISingleResult<Summary_ResultGroupResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3155,140 +3173,6 @@ namespace KhaoSatHSSV.Classes.DB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhaoSat_SinhVien")]
-	public partial class KhaoSat_SinhVien : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _Id;
-		
-		private System.Nullable<int> _QuestionId;
-		
-		private System.Nullable<int> _ChooseLevel;
-		
-		private System.Nullable<long> _SinhVienId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(long value);
-    partial void OnIdChanged();
-    partial void OnQuestionIdChanging(System.Nullable<int> value);
-    partial void OnQuestionIdChanged();
-    partial void OnChooseLevelChanging(System.Nullable<int> value);
-    partial void OnChooseLevelChanged();
-    partial void OnSinhVienIdChanging(System.Nullable<long> value);
-    partial void OnSinhVienIdChanged();
-    #endregion
-		
-		public KhaoSat_SinhVien()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionId", DbType="Int")]
-		public System.Nullable<int> QuestionId
-		{
-			get
-			{
-				return this._QuestionId;
-			}
-			set
-			{
-				if ((this._QuestionId != value))
-				{
-					this.OnQuestionIdChanging(value);
-					this.SendPropertyChanging();
-					this._QuestionId = value;
-					this.SendPropertyChanged("QuestionId");
-					this.OnQuestionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChooseLevel", DbType="Int")]
-		public System.Nullable<int> ChooseLevel
-		{
-			get
-			{
-				return this._ChooseLevel;
-			}
-			set
-			{
-				if ((this._ChooseLevel != value))
-				{
-					this.OnChooseLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ChooseLevel = value;
-					this.SendPropertyChanged("ChooseLevel");
-					this.OnChooseLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SinhVienId", DbType="BigInt")]
-		public System.Nullable<long> SinhVienId
-		{
-			get
-			{
-				return this._SinhVienId;
-			}
-			set
-			{
-				if ((this._SinhVienId != value))
-				{
-					this.OnSinhVienIdChanging(value);
-					this.SendPropertyChanging();
-					this._SinhVienId = value;
-					this.SendPropertyChanged("SinhVienId");
-					this.OnSinhVienIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SinhVien")]
 	public partial class SinhVien : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3947,6 +3831,390 @@ namespace KhaoSatHSSV.Classes.DB
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Groups_Nganh")]
+	public partial class Groups_Nganh : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _NhomId;
+		
+		private string _Manganh;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNhomIdChanging(System.Nullable<int> value);
+    partial void OnNhomIdChanged();
+    partial void OnManganhChanging(string value);
+    partial void OnManganhChanged();
+    #endregion
+		
+		public Groups_Nganh()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NhomId", DbType="Int")]
+		public System.Nullable<int> NhomId
+		{
+			get
+			{
+				return this._NhomId;
+			}
+			set
+			{
+				if ((this._NhomId != value))
+				{
+					this.OnNhomIdChanging(value);
+					this.SendPropertyChanging();
+					this._NhomId = value;
+					this.SendPropertyChanged("NhomId");
+					this.OnNhomIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Manganh", DbType="NChar(10)")]
+		public string Manganh
+		{
+			get
+			{
+				return this._Manganh;
+			}
+			set
+			{
+				if ((this._Manganh != value))
+				{
+					this.OnManganhChanging(value);
+					this.SendPropertyChanging();
+					this._Manganh = value;
+					this.SendPropertyChanged("Manganh");
+					this.OnManganhChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhaoSat_SinhVien")]
+	public partial class KhaoSat_SinhVien : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _Id;
+		
+		private System.Nullable<int> _QuestionId;
+		
+		private System.Nullable<int> _ChooseLevel;
+		
+		private System.Nullable<long> _SinhVienId;
+		
+		private System.Nullable<int> _SoLan;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnQuestionIdChanging(System.Nullable<int> value);
+    partial void OnQuestionIdChanged();
+    partial void OnChooseLevelChanging(System.Nullable<int> value);
+    partial void OnChooseLevelChanged();
+    partial void OnSinhVienIdChanging(System.Nullable<long> value);
+    partial void OnSinhVienIdChanged();
+    partial void OnSoLanChanging(System.Nullable<int> value);
+    partial void OnSoLanChanged();
+    #endregion
+		
+		public KhaoSat_SinhVien()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionId", DbType="Int")]
+		public System.Nullable<int> QuestionId
+		{
+			get
+			{
+				return this._QuestionId;
+			}
+			set
+			{
+				if ((this._QuestionId != value))
+				{
+					this.OnQuestionIdChanging(value);
+					this.SendPropertyChanging();
+					this._QuestionId = value;
+					this.SendPropertyChanged("QuestionId");
+					this.OnQuestionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChooseLevel", DbType="Int")]
+		public System.Nullable<int> ChooseLevel
+		{
+			get
+			{
+				return this._ChooseLevel;
+			}
+			set
+			{
+				if ((this._ChooseLevel != value))
+				{
+					this.OnChooseLevelChanging(value);
+					this.SendPropertyChanging();
+					this._ChooseLevel = value;
+					this.SendPropertyChanged("ChooseLevel");
+					this.OnChooseLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SinhVienId", DbType="BigInt")]
+		public System.Nullable<long> SinhVienId
+		{
+			get
+			{
+				return this._SinhVienId;
+			}
+			set
+			{
+				if ((this._SinhVienId != value))
+				{
+					this.OnSinhVienIdChanging(value);
+					this.SendPropertyChanging();
+					this._SinhVienId = value;
+					this.SendPropertyChanged("SinhVienId");
+					this.OnSinhVienIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLan", DbType="Int")]
+		public System.Nullable<int> SoLan
+		{
+			get
+			{
+				return this._SoLan;
+			}
+			set
+			{
+				if ((this._SoLan != value))
+				{
+					this.OnSoLanChanging(value);
+					this.SendPropertyChanging();
+					this._SoLan = value;
+					this.SendPropertyChanged("SoLan");
+					this.OnSoLanChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class Summary_ResultGroupResult
+	{
+		
+		private int _GroupId;
+		
+		private System.Nullable<int> _Total;
+		
+		private System.Nullable<int> _R4;
+		
+		private System.Nullable<int> _R3;
+		
+		private System.Nullable<int> _R2;
+		
+		private System.Nullable<int> _R1;
+		
+		public Summary_ResultGroupResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", DbType="Int NOT NULL")]
+		public int GroupId
+		{
+			get
+			{
+				return this._GroupId;
+			}
+			set
+			{
+				if ((this._GroupId != value))
+				{
+					this._GroupId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
+		public System.Nullable<int> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_R4", DbType="Int")]
+		public System.Nullable<int> R4
+		{
+			get
+			{
+				return this._R4;
+			}
+			set
+			{
+				if ((this._R4 != value))
+				{
+					this._R4 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_R3", DbType="Int")]
+		public System.Nullable<int> R3
+		{
+			get
+			{
+				return this._R3;
+			}
+			set
+			{
+				if ((this._R3 != value))
+				{
+					this._R3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_R2", DbType="Int")]
+		public System.Nullable<int> R2
+		{
+			get
+			{
+				return this._R2;
+			}
+			set
+			{
+				if ((this._R2 != value))
+				{
+					this._R2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_R1", DbType="Int")]
+		public System.Nullable<int> R1
+		{
+			get
+			{
+				return this._R1;
+			}
+			set
+			{
+				if ((this._R1 != value))
+				{
+					this._R1 = value;
+				}
 			}
 		}
 	}

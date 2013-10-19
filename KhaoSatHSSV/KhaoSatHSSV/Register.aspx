@@ -61,7 +61,7 @@
                 </asp:UpdatePanel>
             </td>
              <td style="width: 120px">Email: (<span style="color: red">*</span>)</td>
-            <td style="width: 200px" colspan="2"><asp:TextBox ID="txtEmail" Width="180px" MaxLength="20" runat="server"></asp:TextBox></td>
+            <td style="width: 200px" colspan="2"><asp:TextBox ID="txtEmail" Width="180px" MaxLength="50" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
             <td colspan="7" align="center">

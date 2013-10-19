@@ -149,14 +149,6 @@
       <Column Name="TuyenSinh" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.KhaoSat_SinhVien" Member="KhaoSat_SinhViens">
-    <Type Name="KhaoSat_SinhVien">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="QuestionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChooseLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SinhVienId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SinhVien" Member="SinhViens">
     <Type Name="SinhVien">
       <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -187,4 +179,32 @@
       <Column Name="ResultE" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Groups_Nganh" Member="Groups_Nganhs">
+    <Type Name="Groups_Nganh">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NhomId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Manganh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhaoSat_SinhVien" Member="KhaoSat_SinhViens">
+    <Type Name="KhaoSat_SinhVien">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChooseLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SinhVienId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SoLan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Summary_ResultGroup" Method="Summary_ResultGroup">
+    <Parameter Name="SinhVienId" Parameter="sinhVienId" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SoLan" Parameter="soLan" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Summary_ResultGroupResult">
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="R4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="R3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="R2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="R1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
