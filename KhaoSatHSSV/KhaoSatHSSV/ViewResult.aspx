@@ -23,6 +23,6 @@
     <p>
        Nhóm C: <asp:Literal ID="liC" runat="server"></asp:Literal> điểm
     </p><p>
-      Bạn đã hoàn thanh khảo sát thông tin. Cảm ơn bạn đã tham gia Khảo sát. Chúc bạn một ngày vui vẻ.
+      Bạn đã hoàn thành khảo sát thông tin. Cảm ơn bạn đã tham gia Khảo sát. Chúc bạn một ngày vui vẻ.
         </p>
 </asp:Content>

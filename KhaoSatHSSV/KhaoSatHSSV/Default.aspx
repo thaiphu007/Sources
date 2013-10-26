@@ -136,7 +136,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
     </tr>
 </table>
 <div class="ct_item">
-    II. Câu hỏi trắc nghiệm khám phá bản thân và sở thích nghề nghiệp
+    II. Câu hỏi trắc nghiệm khám phá bản thân và sở thích nghề nghiệp (Tiến sĩ tâm lý học John Holland)
 </div>
 <div class="ct_subitem">
     Bạn vui lòng chọn đúng sở thích, năng lực, khả năng của mình và dùng mức độ bên dưới để đánh giá và cho điểm nhận định của mình:
@@ -182,7 +182,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
                         – tương ứng
                     </td>
                     <td style="width: 50px">
-                        <span>3 điểm</span> 
+                        <span>2 điểm</span> 
                     </td>
                 </tr>
                  <tr>
@@ -196,7 +196,7 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
                         – tương ứng
                     </td>
                     <td style="width: 50px">
-                        <span>4 điểm</span> 
+                        <span>3 điểm</span> 
                     </td>
                 </tr>
                  <tr>
@@ -210,15 +210,14 @@ câu trả lời của các bạn là cơ sở để mình đánh giá kết qu�
                         – tương ứng
                     </td>
                     <td style="width: 50px">
-                        <span>5 điểm</span> 
+                        <span>4 điểm</span> 
                     </td>
                 </tr>
             </table>
     </div>
 </div>
 <div class="ct_subitem" id="survey1">
-    1. Câu hỏi trắc nghiệm khám phá bản thân và sở thích nghề nghiệp (Tiến sĩ tâm lý học John Holland)
-
+   
 <div class="ct_questions">
     <div class="item_questions">
     <uc1:ucGroup ID="ucGroup1" runat="server" QuestionType="1" />
