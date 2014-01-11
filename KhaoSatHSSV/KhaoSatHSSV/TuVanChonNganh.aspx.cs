@@ -26,13 +26,12 @@ namespace KhaoSatHSSV
                 {
                     var id = (long) Session["SVID"];
                     if (id > 0)
-                    {
-                        
                         LoadData(id);
-                    }
                     else
-                        Response.Redirect("/register.aspx");
+                        Response.Redirect("/login.aspx");
                 }
+                else
+                    Response.Redirect("/login.aspx");
 
             }
         }
@@ -122,31 +121,39 @@ namespace KhaoSatHSSV
             
             //   Response.Write(testID3.glDtID3Alg.GetRules());
             var GetList_AnswerResult=db.GetList_Answer_By_SinhVien(svId).FirstOrDefault();
-            
+            LoadNganh();
             string result=testID3.glDtID3Alg.GetNganh(GetList_AnswerResult);
             if (result != null)
             {
                 var info = db.Nganhs.FirstOrDefault(n => n.Ma.Trim() == result.Trim());
                 //LoadTruong(result);
                 Session["maNganh"] = result.Trim();
-                lblTitle.Text = info!=null ? string.Format(" Bạn phù hợp với ngành: {0}", "") : "Không có ngành phù hợp với kết quả khảo sát của Bạn";
+                lblTitle.Text = info != null ? string.Format(" Bạn phù hợp với ngành: {0}", info.TenNganh) : "Không có ngành phù hợp với kết quả khảo sát của Bạn";
+                if (info == null)
+                    LoadNganh();
             }
             else
+            {
                 lblTitle.Text = "Không có ngành phù hợp với kết quả khảo sát của Bạn";
+                LoadNganh();
+            }
 
         }
 
-        private void LoadTruong(string MaNganh)
+        private void LoadNganh( )
         {
-            //var listtruong = from t in db.Colleges
-            //                 join d in db.DHCD_Nganhs on t.MaTruong equals d.MaTruong
-            //                 where d.MaNganh.Trim() == MaNganh.Trim()
-            //                 select t;
-            //if(listtruong.Any())
-            //{
-            //    rptTruong.DataSource = listtruong;
-            //    rptTruong.DataBind();
-            //}
+            tbListNganh.Visible = true;
+            string[] groups = Request.QueryString["gr"].Split(';');
+            using (var db1 = new KHAOSATDataContext())
+            {
+                var list = (from n in db.Groups_Nganhs
+                            join g in db.Nganhs on n.Manganh.Trim() equals g.Ma.Trim()
+                            where
+                                (n.NhomId == Commons.TryParseInt(groups[0])) || (n.NhomId == Commons.TryParseInt(groups[1]))
+                            select new {TN=g.TenNganh,MN=g.Ma}).Distinct();
+                rptNganh.DataSource = list;
+                rptNganh.DataBind();
+            }
         }
 
         private void LoadKhoiThi()

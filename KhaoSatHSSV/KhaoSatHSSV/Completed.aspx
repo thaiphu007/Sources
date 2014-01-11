@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table style="display: none">
+    <table >
         <tr>
            <td style="width: 100px">
                Danh sách Trường đào tạo Phù hợp vơi Ngành Của Bạn

@@ -3,12 +3,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table>
+         <tr>
+            <td>
+               <asp:HyperLink ID="hpRegister" NavigateUrl="/Register.aspx" runat="server">Đăng Ký</asp:HyperLink>
+            <td>
+              
+            </td>
+        </tr>
         <tr>
             <td>
                 
             </td>
-            <td>
-                
+            <td style="font-size: 24px">
+               <strong>Đăng Nhập</strong> 
             </td>
         </tr>
         <tr>
@@ -16,7 +23,7 @@
                 Tên Đăng Nhập:
             </td>
             <td>
-                
+                <asp:TextBox ID="txtTenDangNhap" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -24,32 +31,18 @@
                 Mật Khẩu:
             </td>
             <td>
-                
+                 <asp:TextBox ID="txtMatKhau" runat="server" TextMode="Password"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                Tên Đăng Nhập:
+                <asp:Button ID="btnDangNhap" runat="server" Text="Đăng Nhập" OnClick="btn_Click" />
             </td>
             <td>
-                
+                <asp:Label ID="lblError" runat="server" ForeColor="red" Text=""></asp:Label>
             </td>
         </tr>
-        <tr>
-            <td>
-               
-            </td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-               
-            </td>
-            <td>
-                
-            </td>
-        </tr>
+     
+       
     </table>
 </asp:Content>

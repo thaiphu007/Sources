@@ -130,8 +130,10 @@ namespace KhaoSatHSSV
                 db.SubmitChanges();
                 SVID = info.Id;
             }
+            Response.Write(SVID);
             return SVID;
         }
+
         private bool valid()
         {
             bool result = true;
@@ -181,14 +183,14 @@ namespace KhaoSatHSSV
                 lblError.Text = "Nhập  Email không đúng !";
                 result = false;
             }
-            else  if(!IsExistEmailOrUserName(true))
+            else  if(IsExistEmailOrUserName(true))
             {
-                txtUser.Text = "Tên đăng nhập  đã tồn tại vui lòng điền tên khác !";
+                lblError.Text = "Tên đăng nhập  đã tồn tại vui lòng điền tên khác !";
                 result = false;
             }
-            else if (!IsExistEmailOrUserName())
+            else if (IsExistEmailOrUserName())
             {
-                txtEmail.Text = "Email đã tồn tại vui lòng điền email khác !";
+                lblError.Text = "Email đã tồn tại vui lòng điền email khác !";
                 result = false;
             }
 
@@ -210,19 +212,24 @@ namespace KhaoSatHSSV
 
         public bool IsExistEmailOrUserName(bool isUserName=false)
         {
-            bool IsExist;
+            bool IsExist=false;
             using (var db=new KHAOSATDataContext())
             {
-                var info = isUserName ? (from sv in db.SinhViens
-                                         where sv.TenDangNhap.ToLower().Equals(txtUser.Text.Trim().ToLower())
-                                         select sv).FirstOrDefault() : (from sv in db.SinhViens
-                                                                        where sv.Email.ToLower().Equals(txtEmail.Text.Trim().ToLower()) ||
-                                                                                                        sv.TenDangNhap.ToLower().Equals(
-                                                                                                            txtUser.Text.Trim().ToLower())
-                                                                        select sv).FirstOrDefault();
-               
-                   IsExist = info != null;
-               
+                if (db.SinhViens != null && db.SinhViens.Any())
+                {
+                    var info = isUserName
+                                   ? (from sv in db.SinhViens
+                                      where sv.TenDangNhap.ToLower().Equals(txtUser.Text.Trim().ToLower())
+                                      select sv).FirstOrDefault()
+                                   : (from sv in db.SinhViens
+                                      where sv.Email.ToLower().Equals(txtEmail.Text.Trim().ToLower()) ||
+                                            sv.TenDangNhap.ToLower().Equals(
+                                                txtUser.Text.Trim().ToLower())
+                                      select sv).FirstOrDefault();
+
+                    IsExist = info != null;
+                }
+
             }
             return IsExist;
         }
@@ -232,7 +239,7 @@ namespace KhaoSatHSSV
             if(valid())
             {
                 Session["SVID"] = GetInfo();
-                Response.Redirect("/survery.aspx");
+                Response.Redirect("/Survey.aspx");
                 Session["UserName"] = txtUser.Text;
             }
         }

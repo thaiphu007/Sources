@@ -80,8 +80,8 @@ namespace KhaoSatHSSV.Classes.DB
     partial void DeleteKhaoSat_SinhVien(KhaoSat_SinhVien instance);
     #endregion
 		
-		public KHAOSATDataContext() :
-        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["khaoSat_HSSV_dbConnectionString"].ConnectionString, mappingSource)
+		public KHAOSATDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["khaoSat_HSSV_dbConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

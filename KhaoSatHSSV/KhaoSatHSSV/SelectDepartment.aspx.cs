@@ -14,6 +14,8 @@ namespace KhaoSatHSSV
         {
             if(!IsPostBack)
             {
+                if (Session["SVID"] == null)
+                    Response.Redirect("/login.aspx");
                 if(!string.IsNullOrEmpty(Request.QueryString["gr"]))
                 {
                     string[] groups = Request.QueryString["gr"].Split(';');
@@ -25,20 +27,7 @@ namespace KhaoSatHSSV
                         groups[1] = Commons.TenNhom(Commons.TryParseInt(groups[1]));
                         rptNhom.DataSource = groups;
                         rptNhom.DataBind();
-                        //using (var db=new KHAOSATDataContext())
-                        //{
-                        //    var list = (from n in db.Groups_Nganhs join g in db.Nganhs on n.Manganh.Trim() equals g.Ma.Trim()
-                        //                where 
-                        //                    (n.NhomId == Commons.TryParseInt(groups[0]) ||
-                        //                     n.NhomId == Commons.TryParseInt(groups[1])) 
-                        //                select g).Distinct();
-                        //    ddlNganh.DataSource = list;
-                        //    ddlNganh.DataTextField = "TenNganh";
-                        //    ddlNganh.DataValueField= "Ma";
-                        //    ddlNganh.SelectedIndex = 0;
-                        //    ddlNganh_SelectedIndex(null,null);
-                        //    UpdatePanel5.Update();
-                        //}
+                       
                     }
                 }
             }
@@ -73,7 +62,7 @@ namespace KhaoSatHSSV
 
         protected void btnSelect_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/tuvanchonnganh.aspx");
+            Response.Redirect("/tuvanchonnganh.aspx?gr=" + Request.QueryString["gr"]);
         }
     }
 }

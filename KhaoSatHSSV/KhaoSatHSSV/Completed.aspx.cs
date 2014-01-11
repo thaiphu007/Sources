@@ -18,7 +18,7 @@ namespace KhaoSatHSSV
                 if (!string.IsNullOrEmpty(Request.QueryString["ma"]))
                 {
                     var listtruong = from t in db.Colleges
-                                     where Request.QueryString["ma"].ToLower().Trim().Contains(t.MaTruong.ToLower().Trim())
+                                     where Request.QueryString["ma"].ToLower().Split(';').Contains(t.MaTruong.ToLower().Trim())
                                      select t;
                     if (listtruong.Any())
                     {

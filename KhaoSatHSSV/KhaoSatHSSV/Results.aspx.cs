@@ -26,16 +26,10 @@ namespace KhaoSatHSSV
                     var info =
                         (from s in db.SinhViens where s.Id == long.Parse(Request.QueryString["id"]) select s).
                             FirstOrDefault();
-                    int Solan = 1;
-                    if (db.KhaoSat_SinhViens != null && db.KhaoSat_SinhViens.Any())
-                    {
-                        Solan = db.KhaoSat_SinhViens.Count(k => k.SinhVienId == long.Parse(Request.QueryString["id"])) / 126;
-                        Session["solan"] = Solan;
-                    }
-                  
+                   
 
                     var listgroup =
-                        (from su in db.Summary_ResultGroup(long.Parse(Request.QueryString["id"]), Solan)
+                        (from su in db.Summary_ResultGroup(long.Parse(Request.QueryString["id"]), 1)
                          select su).ToList();
                     if (info != null)
                     {
@@ -54,7 +48,10 @@ namespace KhaoSatHSSV
                             string groups = string.Empty;
                             foreach (var groupResult in listgroup)
                             {
-                                groups += groupResult.GroupId.ToString() + ";";
+                                if (string.IsNullOrEmpty(groups))
+                                    groups = groupResult.GroupId.ToString();
+                                else
+                                    groups +=   ";"+groupResult.GroupId.ToString();
                                 if (groupResult.GroupId == (int) GroupName.A)
                                     BindData(string.IsNullOrEmpty(liNhom1.Text) ? liNhom1 : liNhom2,
                                              string.Format("Nhóm A: {0} điểm", groupResult.Total));
@@ -111,7 +108,7 @@ namespace KhaoSatHSSV
             }
             else
             {
-                Response.Redirect("/register.aspx");
+                Response.Redirect("/login.aspx");
             }
         }
 
@@ -124,12 +121,17 @@ namespace KhaoSatHSSV
 
     protected void btn_Continue(object sender, EventArgs e)
     {
+        
         Response.Redirect(string.Format("/selectdepartment.aspx?gr={0}", Groups));
     }
 
-    protected void btn_Previous(object sender, EventArgs e)
-    {
-        Response.Redirect(string.Format("/Results.aspx?id={0}", Request.QueryString["id"]));    
-    }
+        protected void btn_Previous(object sender, EventArgs e)
+        {
+            using (var db=new KHAOSATDataContext())
+            {
+                db.KhaoSat_SinhViens.DeleteAllOnSubmit(db.KhaoSat_SinhViens.Where(k => k.SinhVienId == long.Parse(Request.QueryString["id"])));
+            }
+            Response.Redirect(string.Format("/survey.aspx"));    
+        }
     }
 }

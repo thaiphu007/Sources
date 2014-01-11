@@ -12,9 +12,12 @@ namespace KhaoSatHSSV
           if(!IsPostBack)
           {
               if (Session["SVID"] != null)
+              {
+                 
                   LoadData();
+              }
               else
-                  Response.Redirect("/register.aspx");
+                  Response.Redirect("/login.aspx");
           }
         }
 
@@ -25,6 +28,7 @@ namespace KhaoSatHSSV
             var id=(long)Session["SVID"];
             using (var db = new KHAOSATDataContext())
             {
+                db.KhaoSat_SinhViens.DeleteAllOnSubmit(db.KhaoSat_SinhViens.Where(k => k.SinhVienId == id));
                 var info = (from sv in db.SinhViens where sv.Id == id select sv).FirstOrDefault();
                 if (info != null)
                 {

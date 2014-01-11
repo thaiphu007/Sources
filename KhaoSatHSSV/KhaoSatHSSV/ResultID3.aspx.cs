@@ -26,7 +26,7 @@ namespace KhaoSatHSSV
                 }
                 else
                 {
-                    Response.Redirect("/register.aspx");
+                    Response.Redirect("/login.aspx");
                 }
             }
         }

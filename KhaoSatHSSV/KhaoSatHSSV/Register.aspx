@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Root.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="KhaoSatHSSV.Register" %>
+
+<%@ Register Assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+      <asp:HyperLink ID="hpRegister" NavigateUrl="/Login.aspx" runat="server">Đăng Nhập</asp:HyperLink>
     <table width="95%" cellpadding="3" cellspacing="0" border="1">
         <tr>
             <td colspan="7" align="center"><strong>Phiếu Đăng Ký</strong></td>

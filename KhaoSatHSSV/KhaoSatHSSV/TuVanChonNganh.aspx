@@ -3,15 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="lblTitle" runat="server" Text=""></asp:Label>
-    <table style="display: none">
+    <table runat="server" id="tbListNganh" Visible="False">
         <tr>
-           <td style="width: 100px">
-               Danh sách Trường đào tạo
+           <td style="width: 100%">
+               Danh sách ngành bạn có thể chọn
                 <div style="width: 100%;">
-                        <asp:Repeater ID="rptTruong" runat="server">
+                        <asp:Repeater ID="rptNganh" runat="server">
                             <ItemTemplate>
-                               <div style="width: 400px;padding-right: 10px;padding-bottom: 3px">
-                                   - <%# Eval("TenTruong") %>
+                              
+                                     <div style="float: left;width: 200px;padding-right: 10px;padding-bottom: 3px">
+                                         <input id="Checkbox1" type="radio" name="nganh" />  - <%# Eval("TN") %>
+                                
                                </div>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -148,7 +150,7 @@
     
     <p>
        3.	Ước đoán khả năng làm bài thi tuyển sinh của khối thi tương ứng bằng 1 trong 2 cách bên dưới và điền kết quả vào ô kế bên 
-        <asp:TextBox ID="txtDiemDuDoan" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtDiemDuDoan" runat="server"></asp:TextBox> (chỉ nhập 0,1 đến 1)
 			<br/>
             Cách 1: Tự đánh giá khả năng sẽ làm được bài thi tuyển sinh được bao nhieu điểm?
             <br/>
