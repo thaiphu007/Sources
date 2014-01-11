@@ -5,8 +5,26 @@ using System.Web;
 
 namespace KhaoSatHSSV.Classes
 {
+   
     public class Commons
     {
+        public static string TenNhom(int Ma)
+        {
+            string result = string.Empty;
+            if (Ma == (int)GroupName.A)
+                result = GroupName.A.ToString();
+            else if (Ma == (int)GroupName.R)
+                result = GroupName.R.ToString();
+            else if (Ma == (int)GroupName.C)
+                result = GroupName.C.ToString();
+            else if (Ma== (int)GroupName.E)
+                result = GroupName.E.ToString();
+            else if (Ma== (int)GroupName.I)
+                result = GroupName.I.ToString();
+            else if (Ma== (int)GroupName.S)
+                result = GroupName.S.ToString();
+            return result;
+        }
         public static int TryParseInt(string val)
         {
             int result;
@@ -68,5 +86,26 @@ namespace KhaoSatHSSV.Classes
         Dia=6,
         Anh=7,
         Sinh=8
+    }
+    public enum khoiThi
+    {
+        A= 1,
+        A1= 2,
+        B= 3,
+        C= 4,
+        D1= 5,
+        D2= 6,
+        D3= 7,
+        D4= 8,
+        D5= 9,
+        D6= 10,
+        H= 11,
+        N= 12,
+        M= 13,
+        T= 14,
+        V= 15,
+        S= 16,
+        R= 17,
+        K= 18,
     }
 }

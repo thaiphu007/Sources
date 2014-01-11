@@ -40,33 +40,6 @@ namespace KhaoSatHSSV {
         protected global::KhaoSatHSSV.Control.ucGroup ucGroup1;
         
         /// <summary>
-        /// ucGroup2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::KhaoSatHSSV.Control.ucGroup ucGroup2;
-        
-        /// <summary>
-        /// ucGroup4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::KhaoSatHSSV.Control.ucGroup ucGroup4;
-        
-        /// <summary>
-        /// ucGroup3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::KhaoSatHSSV.Control.ucGroup ucGroup3;
-        
-        /// <summary>
         /// Button9 control.
         /// </summary>
         /// <remarks>

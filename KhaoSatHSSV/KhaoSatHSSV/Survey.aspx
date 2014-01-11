@@ -2,24 +2,7 @@
 <%@ Register src="Control/ucGroup.ascx" tagname="ucGroup" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     
-<script type="text/javascript">
-    $(document).ready(function () {
-        HideSurvey();
-        $("#survey1").show();
-    });
 
-    function showSurvey(id) {
-        HideSurvey();
-        $("#" + id).show();
-
-    }
-    function HideSurvey() {
-        $("#survey1").hide();
-        $("#survey2").hide();
-        $("#survey3").hide();
-        $("#survey4").hide();
-    }
-</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="ct_Header">PHIẾU KHẢO SÁT THÔNG TIN</div>
@@ -132,40 +115,6 @@
     <uc1:ucGroup ID="ucGroup1" runat="server" QuestionType="1" />
     </div>
 </div>
-<input value="Next" type="button" id="btnext" class="btnNext" onclick="showSurvey('survey2')" />
+<asp:Button ID="Button9" runat="server" Text="Next" CssClass="btnNext" OnClick="btn_check" />
 </div>
-<div class="ct_subitem" id="survey2">
-    2. Bạn thích làm nghề gì? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
-
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup2" runat="server" QuestionType="2" />
-    </div>
-</div>
-<input value="Next" type="button" id="Button2" class="btnNext" onclick="showSurvey('survey3')" />
-<input value="Back" type="button" id="Button8" class="btnNext" onclick="showSurvey('survey1')" />
-</div>
-<div class="ct_subitem" id="survey3">
-    3. Bạn thường làm gì vào thời gian rảnh? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
-
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup4" runat="server" QuestionType="3" />
-    </div>
-</div>
-<input value="Next" type="button" id="Button3" class="btnNext" onclick="showSurvey('survey4')" />
-<input value="Back" type="button" id="Button7" class="btnNext" onclick="showSurvey('survey2')" />
-</div>
-<div class="ct_subitem" id="survey4">
-    4. Tính cách của bạn như thế nào? (Trắc nghiệm sở thích nghề nghiệp – ĐH Quốc gia Tp.HCM)
-
-<div class="ct_questions">
-    <div class="item_questions">
-    <uc1:ucGroup ID="ucGroup3" runat="server" QuestionType="4" />
-    </div>
-</div>
- <asp:Button ID="Button9" runat="server" Text="Next" CssClass="btnNext" OnClick="btn_check" />
-    <input value="Back" type="button" id="Button5" class="btnNext" onclick="showSurvey('survey3')" />
-</div>
-
 </asp:Content>

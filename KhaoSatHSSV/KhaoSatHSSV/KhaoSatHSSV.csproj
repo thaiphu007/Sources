@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KhaoSatHSSV</RootNamespace>
     <AssemblyName>KhaoSatHSSV</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,10 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System" />
@@ -57,15 +55,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Completed.aspx" />
     <Content Include="Control\ucChooseLevel.ascx" />
     <Content Include="Control\ucGroup.ascx" />
     <Content Include="Control\ucQuestion.ascx" />
     <Content Include="css\main.css" />
     <Content Include="Default.aspx" />
     <Content Include="js\jquery-1.8.2.js" />
+    <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="ResultID3.aspx" />
     <Content Include="Results.aspx" />
+    <Content Include="SelectDepartment.aspx" />
     <Content Include="Survey.aspx" />
+    <Content Include="TuVanChonNganh.aspx" />
     <Content Include="ViewResult.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -85,7 +88,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KHAOSAT.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\DecisionTree.cs" />
+    <Compile Include="Classes\DTNode.cs" />
+    <Compile Include="Classes\Example.cs" />
+    <Compile Include="Classes\ID3.cs" />
     <Compile Include="Classes\LinqExcelProvider25.cs" />
+    <Compile Include="Completed.aspx.cs">
+      <DependentUpon>Completed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Completed.aspx.designer.cs">
+      <DependentUpon>Completed.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Control\ucChooseLevel.ascx.cs">
       <DependentUpon>ucChooseLevel.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,6 +128,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master\Root.Master.cs">
       <DependentUpon>Root.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +150,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ResultID3.aspx.cs">
+      <DependentUpon>ResultID3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultID3.aspx.designer.cs">
+      <DependentUpon>ResultID3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Results.aspx.cs">
       <DependentUpon>Results.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -136,12 +164,26 @@
     <Compile Include="Results.aspx.designer.cs">
       <DependentUpon>Results.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SelectDepartment.aspx.cs">
+      <DependentUpon>SelectDepartment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SelectDepartment.aspx.designer.cs">
+      <DependentUpon>SelectDepartment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Survey.aspx.cs">
       <DependentUpon>Survey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Survey.aspx.designer.cs">
       <DependentUpon>Survey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TuVanChonNganh.aspx.cs">
+      <DependentUpon>TuVanChonNganh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TuVanChonNganh.aspx.designer.cs">
+      <DependentUpon>TuVanChonNganh.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewResult.aspx.cs">
       <DependentUpon>ViewResult.aspx</DependentUpon>

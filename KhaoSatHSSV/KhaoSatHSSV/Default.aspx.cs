@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.UI.WebControls;
 using KhaoSatHSSV.Classes;
 using KhaoSatHSSV.Classes.DB;
@@ -94,6 +96,96 @@ namespace KhaoSatHSSV
             
         }
 
+        private bool checkZero(int testerId)
+        {
+            var result = false;
+            using (var db=new KHAOSATDataContext())
+            {
+                var total = (from s in db.Survey_Answers where s.TesterId == testerId select s).Sum(s => s.ChooseLevel);
+                result = total == 0;
+            }
+            return result;
+        }
+
+        private void checkDefference(int index,GetList_AnswerResult item, ref List<GetList_AnswerResult> list)
+        {
+           
+            bool IsRemove = false;
+            for(int i=index;i<list.Count;i++)
+            {
+                 var temp = list[i];
+             
+                 foreach (var propertyInfo in temp.GetType()
+                                .GetProperties(
+                                        BindingFlags.Public
+                                        | BindingFlags.Instance))
+                 {
+                     if (propertyInfo.Name != "TesterId")
+                     {
+                         PropertyInfo pi = item.GetType().GetProperty(propertyInfo.Name);
+                         var val1 = pi.GetValue(item, null).ToString();
+                         var val2 = propertyInfo.GetValue(temp, null).ToString();
+                         if (val1 != val2)
+                         {
+                             if (propertyInfo.Name == "MaNganh")
+                                 IsRemove = true;
+                             break;
+                         }
+                     }
+
+                 }
+                 if (IsRemove)
+                     list[i].MaNganh=item.MaNganh;
+                IsRemove = false;
+            }
+        
+        }
+
+        /* Test Luat */
+        private void UpdateTrainingExamples(List<GetList_AnswerResult> list)
+        {
+            var testID3=new ID3();
+            for (int i = 1; i <= 54;i++)
+            {
+                testID3.attributes.Add(string.Format("Q{0}", i.ToString()));
+                testID3.staticAtt.Add(string.Format("Q{0}", i.ToString()));
+            }
+
+            int index = 0;
+            foreach (var item in list)
+            {
+                checkDefference(index, item, ref list);
+                index++;
+                if(item.TesterId != null && checkZero(item.TesterId.Value))
+                    continue;
+                var example = new Example();
+                foreach (var propertyInfo in item.GetType()
+                                .GetProperties(
+                                        BindingFlags.Public
+                                        | BindingFlags.Instance))
+                {
+                 
+                    example.AddValue(propertyInfo.GetValue(item, null).ToString());
+                }
+                testID3.trainingExamples.Add(example);
+
+            }
+            testID3.ID3Alg(testID3.trainingExamples, testID3.attributes, -1);
+
+         //   Response.Write(testID3.glDtID3Alg.GetRules());
+            var GetList_AnswerResult = new GetList_Answer_By_SinhVienResult
+            {
+                Q9 = 0,
+                Q2 = 4,
+                Q13 = 4,
+                Q45 = 0,
+                Q3 = 3
+            };
+            Response.Write(testID3.glDtID3Alg.GetNganh(GetList_AnswerResult));
+       
+
+        }
+
         private void LoadData()
         {
             using (var db = new KHAOSATDataContext())
@@ -122,10 +214,10 @@ namespace KhaoSatHSSV
                 ddlNganhHoc.DataTextField = "TenNganh";
                 ddlNganhHoc.DataValueField = "Ma";
                 ddlNganhHoc.DataBind();
-                
 
-           
-
+                //List<GetList_AnswerResult> list = db.GetList_Answer().ToList();
+           //     list = list.Where(t => t.TesterId == 238 || t.TesterId == 520).ToList();
+                //UpdateTrainingExamples(list);
             }
         }
 

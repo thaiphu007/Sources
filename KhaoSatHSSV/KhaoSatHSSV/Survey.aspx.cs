@@ -30,9 +30,6 @@ namespace KhaoSatHSSV
                 {
                     //save answer
                     ucGroup1.SetPoint();
-                    ucGroup2.SetPoint();
-                    ucGroup3.SetPoint();
-                    ucGroup4.SetPoint();
                     //save average
                     int r = 0;
                     int i = 0;
@@ -51,8 +48,9 @@ namespace KhaoSatHSSV
                     id = info.Id;
                 }
             }
-
-            Response.Redirect(string.Format("/Results.aspx?id={0}", id));
+            if(string.IsNullOrEmpty(Request.QueryString["mode"]))
+                Response.Redirect(string.Format("/Results.aspx?id={0}", id));
+            Response.Redirect(string.Format("/ResultId3.aspx?id={0}", id));
 
         }
 
@@ -70,30 +68,17 @@ namespace KhaoSatHSSV
             }
         }
 
-        //private PointAverage GetInfo(TextBox txt10, TextBox txt11, TextBox txt12, int testerId, SubjectName sbj)
-        //{
-        //    var average = new PointAverage
-        //    {
-        //        Ten = Commons.TryParseFloat(txt10.Text),
-        //        Eleven = Commons.TryParseFloat(txt11.Text),
-        //        Twelve = Commons.TryParseFloat(txt12.Text),
-        //        SubjectId = (int)sbj,
-        //        Block = string.Format("{0};{1};{2},{3};{4};{5}", "0", "0", "0", "0", "0", ""),
-        //        TesterId = testerId
-        //    };
-        //    return average;
-        //}
-
+     
       
 
         private void GetTotalGroupPoint(ref int r, ref  int i, ref int a, ref  int e, ref  int c, ref int s)
         {
-            r = ucGroup1.GroupR +ucGroup2.GroupR + ucGroup3.GroupR + ucGroup4.GroupR;
-            i = ucGroup1.GroupI +ucGroup2.GroupI + ucGroup3.GroupI + ucGroup4.GroupI;
-            a = ucGroup1.GroupA +ucGroup2.GroupA + ucGroup3.GroupA + ucGroup4.GroupA;
-            e = ucGroup1.GroupE +ucGroup2.GroupE + ucGroup3.GroupE + ucGroup4.GroupE;
-            c = ucGroup1.GroupC +ucGroup2.GroupC + ucGroup3.GroupC + ucGroup4.GroupC;
-            s = ucGroup1.GroupS +ucGroup2.GroupS + ucGroup3.GroupS + ucGroup4.GroupS;
+            r = ucGroup1.GroupR;
+            i = ucGroup1.GroupI;
+            a = ucGroup1.GroupA;
+            e = ucGroup1.GroupE;
+            c = ucGroup1.GroupC;
+            s = ucGroup1.GroupS;
         }
 
        

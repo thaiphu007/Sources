@@ -11,6 +11,11 @@ namespace KhaoSatHSSV
 {
     public partial class Results : System.Web.UI.Page
     {
+        public string Groups
+        {
+            get { return ViewState["Groups"] == null ? string.Empty : ViewState["Groups"].ToString(); }
+            set { ViewState["Groups"]=value; }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack){
@@ -85,6 +90,7 @@ namespace KhaoSatHSSV
                             else
                             {
                                 int count = 0;
+                                Groups = groups;
                                 foreach (var group in groups.Split(';'))
                                 {
                                     if (!string.IsNullOrEmpty(group) && info.KhaNang.Contains(group))
@@ -118,12 +124,12 @@ namespace KhaoSatHSSV
 
     protected void btn_Continue(object sender, EventArgs e)
     {
-            
+        Response.Redirect(string.Format("/selectdepartment.aspx?gr={0}", Groups));
     }
 
     protected void btn_Previous(object sender, EventArgs e)
     {
-            
+        Response.Redirect(string.Format("/Results.aspx?id={0}", Request.QueryString["id"]));    
     }
     }
 }

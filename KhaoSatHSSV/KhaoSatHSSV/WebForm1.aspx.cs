@@ -121,104 +121,50 @@ namespace KhaoSatHSSV
         }
         private void Import()
         {
-            string filename = @"C:\Users\user\Downloads\6 nhom lua chon.xlsx";
+            string filename = @"C:\Users\user\Downloads\Truong_Nganh_Diem chuan_DH_CD_OK (2).xlsx";
 
             ExcelProvider provider = ExcelProvider.Create(filename);
-            var list = (from p in provider.GetSheet<GroupNganh>() select p);
+            var list = (from p in provider.GetSheet<DHCD_Nganha>() select p);
             //Response.Write(list.Count());
             //Response.End();
             string matruong = string.Empty;
-            foreach (GroupNganh per in list)
+            foreach (DHCD_Nganha per in list)
             {
-                if (!string.IsNullOrEmpty(per.MaNhom))
+                if (!string.IsNullOrEmpty(per.MaTruong))
                 {
-                    //Response.Write(string.Format("{9}=>{0}=>{1}=>{2}=>{3}=>{4}=>{5}=>{6}=>{7}=>{8}<br>", per.TenTruong, per.DiaChi, per.WEBSITE, per.MaTruong, per.MaNganh, per.TenNGanh, per.KhoiThi, per.LoaiTruong, per.GhiChu, matruong));
-                    if (per.MaNhom == GroupName.A.ToString())
-                       InsertGroupNganh((int)GroupName.A,per.MaNganh);// Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-                    else if (per.MaNhom == GroupName.C.ToString())
-                        InsertGroupNganh((int)GroupName.C, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-                    else if (per.MaNhom == GroupName.E.ToString())
-                        InsertGroupNganh((int)GroupName.E, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-                    else if (per.MaNhom == GroupName.I.ToString())
-                        InsertGroupNganh((int)GroupName.I, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-                    else if (per.MaNhom == GroupName.R.ToString())
-                        InsertGroupNganh((int)GroupName.R, per.MaNganh);//Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-                    else if (per.MaNhom == GroupName.S.ToString())
-                        InsertGroupNganh((int)GroupName.S, per.MaNganh);// Response.Write(string.Format("{0}=>{1}<br/>", per.MaNhom, per.MaNganh));
-
-
-                        db.SubmitChanges();
-                    //var group = new Classes.DB.NhomNganh()
-                    //{
-                    //    Ma = per.MaNhom,
-                    //    TenNhom = per.TenNhom
-                    //};
-                    //db.NhomNganhs.InsertOnSubmit(group);
-                    //db.SubmitChanges();
-
+                    matruong = per.MaTruong;
+                    Response.Write(per.MaTruong + "<br/>");
                     //var dhnganh = new Classes.DB.DHCD_Nganh()
-                    //{
-
-                    //    MaTruong = matruong,
-                    //    MaNganh = per.MaNganh,
-                    //    KhoiThi = per.KhoiThi ?? string.Empty,
-                    //    TuyenSinh = true,
-                    //    NamTuyenSinh = DateTime.Now.Year.ToString()
-                    //};
-                    //db.DHCD_Nganhs.InsertOnSubmit(dhnganh);
-                    //db.SubmitChanges();
-
-                    //Response.Write(string.Format("{0}=>{1}<br/>",per.MaNganh,per.TenNganh));
-
-                    //var group = new Classes.DB.Nganh()
-                    //{
-                    //    Ma = per.MaNganh.Trim(),
-                    //    TenNganh = per.TenNganh.Trim()
-                    //};
-                    //db.Nganhs.InsertOnSubmit(group);
-                    //db.SubmitChanges();
-                    //var nhomnganh =
-                    //    (from n in db.NhomNganhs where n.Ma.Trim() == per.MaNganh.Trim().Substring(0, 8) select n).
-                    //        FirstOrDefault();
-                    //if (nhomnganh != null)
-                    //{
-                    //    var group_nganh = new Classes.DB.Nhom_Nganh()
                     //    {
-                    //        MaNganh = group.Id,
-                    //        MaNhomNganh = nhomnganh.Id
+
+                    //        MaTruong = matruong,
+                    //        MaNganh = per.MaNganh,
+                    //        KhoiThi = per.KhoiThi ?? string.Empty,
+                    //        TuyenSinh = true,
+                    //        NamTuyenSinh = DateTime.Now.Year.ToString()
                     //    };
-                    //    db.Nhom_Nganhs.InsertOnSubmit(group_nganh);
+                    //    db.DHCD_Nganhs.InsertOnSubmit(dhnganh);
                     //    db.SubmitChanges();
-                    //}
-
-                    //var group = new Classes.DB.NhomNganh()
-                    //{
-                    //    Ma = per.MaNhom,
-                    //    TenNhom = per.TenNhom
-                    //};
-                    //db.NhomNganhs.InsertOnSubmit(group);
-                    //db.SubmitChanges();
                 }
-                //else if (!string.IsNullOrEmpty(per.MaTruong))
-                //{
+                else if (!string.IsNullOrEmpty(matruong) && !string.IsNullOrEmpty(per.MaNganh))
+                {
+                    var dhnganh = (from d in db.DHCD_Nganhs
+                                   where d.MaNganh != null && d.MaNganh.Trim() == per.MaNganh.Trim() && d.MaTruong.ToLower().Trim() == matruong.ToLower().Trim()
+                                   select d).FirstOrDefault();
+                    if (dhnganh != null)
+                    {
+                        dhnganh.NamTuyenSinh =string.IsNullOrEmpty(per.NV1)?"0": per.NV1.Replace(",", ";");
+                        if (!string.IsNullOrEmpty(per.NV2))
+                            dhnganh.NamTuyenSinh += ";" + (string.IsNullOrEmpty(per.NV2) ? "0" : per.NV2.Replace(",", ";"));
+                        if (string.IsNullOrEmpty(dhnganh.NamTuyenSinh))
+                            dhnganh.NamTuyenSinh = "0";
+                        db.SubmitChanges();
+                    }
 
-                //    Response.Write(string.Format("{0}=>{1}=>{2}=>{3}=>{4}=>{5}=>{6}=>{7}=>{8}<br>", per.TenTruong, per.DiaChi, per.WEBSITE, per.MaTruong, per.MaNganh, per.TenNGanh, per.KhoiThi, per.LoaiTruong, per.GhiChu));
-                  
-                //    var college = new Classes.DB.College()
-                //    {
-                //        TenTruong = per.TenTruong,
-                //        MaTruong = per.MaTruong,
-                //        DiaChi = per.DiaChi??string.Empty,
-                //        WebSite = per.WEBSITE??string.Empty,
-                //        GhiChu = per.GhiChu??string.Empty,
-                //        LoaiTruong = per.LoaiTruong!=null && per.LoaiTruong.Trim()=="CL"?1:0,
-                //        CapBac = 2,
-                //        HienThi = true
-                //    };
-                //    db.Colleges.InsertOnSubmit(college);
-                //    db.SubmitChanges();
-                //    matruong = per.MaTruong;
-                //}
+                    Response.Write(matruong + "=> " + per.MaNganh + "=> " + per.NV1 + "=> " + per.NV2 + "<br/>");
+                }
+
+
             }
         }
     }

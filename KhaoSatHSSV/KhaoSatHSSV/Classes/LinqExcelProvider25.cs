@@ -87,6 +87,8 @@ namespace LinqToExcel
         private string ghichu;
         private string khoithi;
         private string manganh;
+        private string nv1;
+        private string nv2;
      
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         public DHCD_Nganha()
@@ -113,6 +115,26 @@ namespace LinqToExcel
             {
                 manganh = value;
                 SendPropertyChanged("MaNganh");
+            }
+        }
+        [ExcelColumn(Name = "NV1", Storage = "nv1")]
+        public string NV1
+        {
+            get { return this.nv1; }
+            set
+            {
+                nv1 = value;
+                SendPropertyChanged("NV1");
+            }
+        }
+         [ExcelColumn(Name = "NV2", Storage = "nv2")]
+        public string NV2
+        {
+            get { return this.nv2; }
+            set
+            {
+                nv1 = value;
+                SendPropertyChanged("NV2");
             }
         }
         [ExcelColumn(Name = "TÊN TRƯỜNG", Storage = "tentruong")]

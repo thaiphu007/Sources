@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="khaoSat_HSSV_db" Class="KHAOSATDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=khaoSat_HSSV_db;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="khaoSat_HSSV_dbConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=khaoSat_HSSV_db;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="khaoSat_HSSV_dbConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Questions" Member="Questions">
     <Type Name="Question">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -205,6 +205,126 @@
       <Column Name="R3" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="R2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="R1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetList_Answer" Method="GetList_Answer">
+    <ElementType Name="GetList_AnswerResult">
+      <Column Name="TesterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q8" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q9" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q10" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q11" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q12" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q13" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q14" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q15" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q16" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q17" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q18" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q19" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q20" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q21" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q22" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q23" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q24" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q25" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q26" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q27" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q28" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q29" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q30" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q31" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q32" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q33" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q34" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q35" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q36" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q37" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q38" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q39" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q40" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q41" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q42" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q43" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q44" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q45" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q46" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q47" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q48" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q49" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q50" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q51" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q52" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q53" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q54" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNganh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetList_Answer_By_SinhVien" Method="GetList_Answer_By_SinhVien">
+    <Parameter Name="SinhVienId" Parameter="sinhVienId" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetList_Answer_By_SinhVienResult">
+      <Column Name="SinhVienId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Q1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q8" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q9" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q10" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q11" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q12" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q13" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q14" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q15" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q16" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q17" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q18" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q19" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q20" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q21" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q22" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q23" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q24" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q25" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q26" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q27" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q28" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q29" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q30" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q31" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q32" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q33" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q34" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q35" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q36" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q37" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q38" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q39" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q40" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q41" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q42" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q43" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q44" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q45" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q46" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q47" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q48" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q49" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q50" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q51" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q52" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q53" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Q54" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>
