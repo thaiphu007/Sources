@@ -123,13 +123,16 @@ namespace KhaoSatHSSV
                      if (propertyInfo.Name != "TesterId")
                      {
                          PropertyInfo pi = item.GetType().GetProperty(propertyInfo.Name);
-                         var val1 = pi.GetValue(item, null).ToString();
-                         var val2 = propertyInfo.GetValue(temp, null).ToString();
-                         if (val1 != val2)
+                         if (pi.GetValue(item, null) != null)
                          {
-                             if (propertyInfo.Name == "MaNganh")
-                                 IsRemove = true;
-                             break;
+                             var val1 = pi.GetValue(item, null).ToString();
+                             var val2 = propertyInfo.GetValue(temp, null).ToString();
+                             if (val1 != val2)
+                             {
+                                 if (propertyInfo.Name == "MaNganh")
+                                     IsRemove = true;
+                                 break;
+                             }
                          }
                      }
 
@@ -164,7 +167,8 @@ namespace KhaoSatHSSV
                                         BindingFlags.Public
                                         | BindingFlags.Instance))
                 {
-                 
+
+                    if (propertyInfo.GetValue(item, null)!=null)
                     example.AddValue(propertyInfo.GetValue(item, null).ToString());
                 }
                 testID3.trainingExamples.Add(example);
@@ -172,17 +176,69 @@ namespace KhaoSatHSSV
             }
             testID3.ID3Alg(testID3.trainingExamples, testID3.attributes, -1);
 
-         //   Response.Write(testID3.glDtID3Alg.GetRules());
-            var GetList_AnswerResult = new GetList_Answer_By_SinhVienResult
+            //Response.Write(testID3.glDtID3Alg.GetRules());
+            using (var db = new KHAOSATDataContext())
             {
-                Q9 = 0,
-                Q2 = 4,
-                Q13 = 4,
-                Q45 = 0,
-                Q3 = 3
-            };
-            Response.Write(testID3.glDtID3Alg.GetNganh(GetList_AnswerResult));
-       
+                var GetList_AnswerResult = db.GetList_Answer_By_SinhVien(2).FirstOrDefault();
+                //var GetList_AnswerResult = new GetList_Answer_By_SinhVienResult
+                //{
+                //    Q1 = 3,
+                //    Q2 = 3,
+                //    Q3 = 3,
+                //    Q4 = 2,
+                //    Q5 = 3,
+                //    Q6 = 0,
+                //    Q7 = 2,
+                //    Q8 = 3,
+                //    Q9 = 3,
+                //    Q10 = 4,
+                //    Q11 = 3,
+                //    Q12 = 3,
+                //    Q13 = 3,
+                //    Q14 = 2,
+                //    Q15 = 0,
+                //    Q16 = 3,
+                //    Q17 = 2,
+                //    Q18 = 2,
+                //    Q19 = 4,
+                //    Q20 = 3,
+                //    Q21 = 4,
+                //    Q22 = 2,
+                //    Q23 = 3,
+                //    Q24 = 0,
+                //    Q25 = 3,
+                //    Q26 = 2,
+                //    Q27 = 2,
+                //    Q28 = 3,
+                //    Q29 = 3,
+                //    Q30 = 4,
+                //    Q31 = 2,
+                //    Q32 = 3,
+                //    Q33 = 0,
+                //    Q34 = 3,
+                //    Q35 = 4,
+                //    Q36 = 3,
+                //    Q37 = 2,
+                //    Q38 = 3,
+                //    Q39 = 2,
+                //    Q40 = 2,
+                //    Q41 = 3,
+                //    Q42 = 0,
+                //    Q43 = 1,
+                //    Q44 = 2,
+                //    Q45 = 4,
+                //    Q46 = 3,
+                //    Q47 = 3,
+                //    Q48 = 3,
+                //    Q49 = 3,
+                //    Q50 = 4,
+                //    Q51 = 0,
+                //    Q52 = 3,
+                //    Q53 = 3,
+                //    Q54 = 3
+                //};
+                Response.Write(testID3.glDtID3Alg.GetNganh(GetList_AnswerResult));
+            }
 
         }
 
@@ -215,9 +271,9 @@ namespace KhaoSatHSSV
                 ddlNganhHoc.DataValueField = "Ma";
                 ddlNganhHoc.DataBind();
 
-                //List<GetList_AnswerResult> list = db.GetList_Answer().ToList();
+               // List<GetList_AnswerResult> list = db.GetList_Answer().ToList();
            //     list = list.Where(t => t.TesterId == 238 || t.TesterId == 520).ToList();
-                //UpdateTrainingExamples(list);
+              //  UpdateTrainingExamples(list);
             }
         }
 

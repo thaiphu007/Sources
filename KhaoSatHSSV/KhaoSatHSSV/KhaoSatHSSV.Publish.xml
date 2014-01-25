@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
   <publishProfile publishUrl="E:\Deploy\lifeyou\publish" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Web.config" publishTime="01/11/2014 15:57:06" />
+    <file relUrl="Web.config" publishTime="01/25/2014 18:27:40" />
     <file relUrl="WebForm1.aspx" publishTime="09/22/2013 13:32:07" />
     <file relUrl="bin/Telerik.Web.UI.dll" publishTime="06/09/2013 17:16:09" />
     <file relUrl="js/jquery-1.8.2.js" publishTime="09/18/2013 16:54:24" />
@@ -10,15 +10,15 @@
     <file relUrl="Register.aspx" publishTime="01/11/2014 14:36:44" />
     <file relUrl="Control/ucQuestion.ascx" publishTime="09/19/2013 19:36:24" />
     <file relUrl="SelectDepartment.aspx" publishTime="01/11/2014 16:04:15" />
-    <file relUrl="TuVanChonNganh.aspx" publishTime="12/14/2013 16:26:57" />
+    <file relUrl="TuVanChonNganh.aspx" publishTime="01/11/2014 17:31:01" />
     <file relUrl="Survey.aspx" publishTime="10/26/2013 16:35:50" />
     <file relUrl="ViewResult.aspx" publishTime="10/26/2013 16:33:05" />
     <file relUrl="Master/Root.Master" publishTime="10/26/2013 18:10:15" />
     <file relUrl="Control/ucGroup.ascx" publishTime="09/18/2013 18:50:40" />
-    <file relUrl="bin/KhaoSatHSSV.dll" publishTime="01/11/2014 16:32:19" />
+    <file relUrl="bin/KhaoSatHSSV.dll" publishTime="01/25/2014 18:28:06" />
     <file relUrl="ResultID3.aspx" publishTime="10/26/2013 16:38:25" />
     <file relUrl="Completed.aspx" publishTime="01/11/2014 16:33:32" />
-    <file relUrl="bin/KhaoSatHSSV.pdb" publishTime="01/11/2014 16:32:19" />
+    <file relUrl="bin/KhaoSatHSSV.pdb" publishTime="01/25/2014 18:28:06" />
     <file relUrl="Default.aspx" publishTime="10/26/2013 16:33:05" />
     <file relUrl="Login.aspx" publishTime="01/11/2014 14:28:16" />
     <file relUrl="css/main.css" publishTime="09/19/2013 20:01:19" />

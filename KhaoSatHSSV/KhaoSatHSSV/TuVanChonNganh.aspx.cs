@@ -41,7 +41,7 @@ namespace KhaoSatHSSV
 
             
             List<GetList_AnswerResult> list = db.GetList_Answer().ToList();
-            list = list.Where(t => t.TesterId == 238 || t.TesterId == 520).ToList();
+          //  list = list.Where(t => t.TesterId == 238 || t.TesterId == 520).ToList();
             UpdateTrainingExamples(list,svId);
         }
 
@@ -121,7 +121,7 @@ namespace KhaoSatHSSV
             
             //   Response.Write(testID3.glDtID3Alg.GetRules());
             var GetList_AnswerResult=db.GetList_Answer_By_SinhVien(svId).FirstOrDefault();
-            LoadNganh();
+           // LoadNganh();
             string result=testID3.glDtID3Alg.GetNganh(GetList_AnswerResult);
             if (result != null)
             {

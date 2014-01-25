@@ -247,20 +247,25 @@ namespace KhaoSatHSSV.Classes
                         }
                     }
                     i = tmp;
-                    
+                    IsMatch = true;
                     while (stkRules.Count > 1)
                     {
-
-                        if (stkRules.Peek().Attribute == true)
+                        bool IsAttr= stkRules.Peek().Attribute;
+                        string attr= stkRules.Pop().Name.Trim();
+                        if (IsAttr)
                         {
-                            PropertyInfo pi = item.GetType().GetProperty(stkRules.Pop().Name.Trim());
-                            val = (int)(pi.GetValue(item, null));
+                            attr = "Q" + (Commons.TryParseInt(attr.Trim().Replace("Q", "")) - 1).ToString();
+                            PropertyInfo pi = item.GetType().GetProperty(attr);
+                            if (pi.GetValue(item, null) != null)
+                                val = (int)(pi.GetValue(item, null));
+                            
                         }
-                        else
+                        else 
                         {
-                            var value = string.IsNullOrEmpty(stkRules.Pop().Name.Trim())?"0":stkRules.Pop().Name.Trim();
-                            if (val.ToString() !=value)
+                            var value = string.IsNullOrEmpty(attr) ? "0" : attr;
+                            if (val.ToString() != value)
                                 IsMatch = false;
+                            
                         }
                     }
                     if (IsMatch)
@@ -299,11 +304,11 @@ namespace KhaoSatHSSV.Classes
                     while (stkRules.Count > 1)
                     {
                         if (stkRules.Peek().Attribute == true)
-                            rules += stkRules.Pop().Name + "-";
+                            rules += stkRules.Pop().Name + " - ";
                         else
-                            rules += stkRules.Pop().Name + "-";
+                            rules += stkRules.Pop().Name + " - ";
                     }
-                    rules += stkRules.Pop().Name + "-" + result+"<br/>";
+                    rules += stkRules.Pop().Name + " => " + result+"<br/>";
                 }
             }
 
